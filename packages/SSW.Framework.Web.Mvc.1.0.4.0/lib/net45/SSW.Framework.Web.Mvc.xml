@@ -1,0 +1,300 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SSW.Framework.Web.Mvc</name>
+    </assembly>
+    <members>
+        <member name="T:SSW.Framework.Web.Mvc.CacheHelper">
+            <summary>
+            </summary>
+            <example>
+               var cacheKey = CacheHelper.CreateKey("Cache Name", "Add Optional Id's", "Add Optional Filters");
+               return CacheHelper.GetCacheItem(cacheKey, new TimeSpan(0, 30, 0), () =>
+                   {
+                       return "Database call or something Big";
+                   });
+            </example>
+        </member>
+        <member name="T:SSW.Framework.Web.Mvc.ControlModel">
+            <summary>
+            ControlModel is a view model used by the ControlExtensions to support custom control layout.
+            </summary>
+        </member>
+        <member name="F:SSW.Framework.Web.Mvc.ControlModel.LabelFor">
+            <summary>
+            Gets or sets the function that returns the label for the control.
+            </summary>
+        </member>
+        <member name="F:SSW.Framework.Web.Mvc.ControlModel.ControlFor">
+            <summary>
+            Gets or sets the function that returns the editor for the control.
+            </summary>
+        </member>
+        <member name="F:SSW.Framework.Web.Mvc.ControlModel.ValidationMessageFor">
+            <summary>
+            Gets or sets the function that returns the validation message section for the control.
+            </summary>
+        </member>
+        <member name="T:SSW.Framework.Web.Mvc.ConvertHelper">
+            <summary>
+            Type conversion methods.
+            </summary>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.ConvertHelper.ChangeType(System.Object,System.Type)">
+            <summary>
+            Returns an Object with the specified Type and whose value is equivalent to the specified object.
+            </summary>
+            <param name="value">An Object that implements the IConvertible interface.</param>
+            <param name="conversionType">The Type to which value is to be converted.</param>
+            <returns>An object whose Type is conversionType (or conversionType's underlying type if conversionType
+            is Nullable&lt;&gt;) and whose value is equivalent to value. -or- a null reference, if value is a null
+            reference and conversionType is not a value type.</returns>
+            <remarks>
+            This method exists as a workaround to System.Convert.ChangeType(Object, Type) which does not handle
+            nullables as of version 2.0 (2.0.50727.42) of the .NET Framework. The idea is that this method will
+            be deleted once Convert.ChangeType is updated in a future version of the .NET Framework to handle
+            nullable types, so we want this to behave as closely to Convert.ChangeType as possible.
+            This method was written by Peter Johnson at:
+            http://aspalliance.com/author.aspx?uId=1026.
+            </remarks>
+        </member>
+        <member name="T:SSW.Framework.Web.Mvc.EnumExtensions">
+            <summary>
+            Extensions for working with Enums.
+            DsiplayNames are cached for performance.
+            </summary>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.EnumExtensions.ToDisplayName``1(``0)">
+            <summary>
+            Get user-readable display name (as read from Attrributtes) for an Enum value
+            </summary>
+            <typeparam name="T">an enumerated type</typeparam>
+            <param name="value">enum value</param>
+            <returns></returns>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.EnumExtensions.ToDisplayName``1(System.Nullable{``0})">
+            <summary>
+            Get user-readable display name for a nullable Enum value
+            </summary>
+            <typeparam name="T">an enumerated type</typeparam>
+            <param name="value">enum value</param>
+            <returns></returns>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.EnumExtensions.ToSelectListItems``1(System.Nullable{``0},System.String)">
+            <summary>
+            Generate list collection of SelectListItem for a Nullable Enumerated Type
+            </summary>
+            <typeparam name="T">Must ba an Enum type</typeparam>
+            <param name="value">Selected value for the select list.</param>
+            <param name="emptyText">Display text for the null option.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.EnumExtensions.ToSelectListItems``1(``0)">
+            <summary>
+            Generate list collection of SelectListItem for an Enumerated Type
+            </summary>
+            <typeparam name="T">Must ba an Enum type</typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.EnumExtensions.NamesCache`1.GetDisplayName(`0)">
+            <summary>
+            Get the DisplayName (as specified by DisplayName attribute) for an Enum value
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SSW.Framework.Web.Mvc.EnumHelper">
+            <summary>
+            Helper functions to access enum attributes  
+            </summary>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.EnumHelper.GetDisplayNames``1">
+            <summary>
+            Build a dictionary mapping Enum value to diaplay anme strings
+            </summary>
+            <typeparam name="TEnum"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.EnumHelper.GetDisplayName(System.Type,System.String)">
+            <summary>
+            Get display name for am Enum value.
+            First attempts to Read DisplayAttribute.Name, then falls back to DescriptionAttribute and then just the raw Enum name. 
+            </summary>
+            <param name="enumType"></param>
+            <param name="enumValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.EnumHelper.GetEnumDescription``1(``0)">
+            <summary>
+            Gets the enum description.
+            </summary>
+            <typeparam name="TEnum">The type of the enum.</typeparam>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.EnumHelper.ToSelectList``1(``0,System.String)">
+            <summary>
+            To the select list.
+            </summary>
+            <typeparam name="TEnum">The type of the enum.</typeparam>
+            <param name="enumObj">The enum object.</param>
+            <param name="selectedValue">The selected value.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SSW.Framework.Web.Mvc.EnumHtmlExtensions">
+            <summary>
+            HtmlHelper extensiuon for using enums
+            </summary>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.EnumHtmlExtensions.EnumDropDownFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            build a dropDownList for an enum value
+            </summary>
+            <typeparam name="TModel"></typeparam>
+            <typeparam name="TProperty"></typeparam>
+            <param name="htmlHelper"></param>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.EnumHtmlExtensions.EnumDropDownFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object)">
+            <summary>
+            build a dropDownList for an enum value
+            </summary>
+            <typeparam name="TModel"></typeparam>
+            <typeparam name="TProperty"></typeparam>
+            <param name="htmlHelper"></param>
+            <param name="expression"></param>
+            <param name="htmlAttributes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.EnumHtmlExtensions.EnumDropDownFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.Object)">
+            <summary>
+            build a dropDownList for an enum value
+            </summary>
+            <typeparam name="TModel"></typeparam>
+            <typeparam name="TProperty"></typeparam>
+            <param name="htmlHelper"></param>
+            <param name="expression"></param>
+            <param name="optionLabel"></param>
+            <param name="htmlAttributes"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SSW.Framework.Web.Mvc.JsonNetExtensions">
+            <summary>
+            Provide extensions methods that 
+            </summary>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.JsonNetExtensions.JsonNet(System.Web.Mvc.Controller,System.Object,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Creates a JsonNetResult object that serializes the specified object to JavaScript Object Notation (JSON) format using Json.NET serializer.
+            </summary>
+            <param name="controller">The controller for the current action.</param>
+            <param name="data">The JavaScript object graph to serialize.</param>
+            <param name="settings"></param>
+            <returns>The result object that serializes the specified object to JSON format.</returns>
+        </member>
+        <member name="T:SSW.Framework.Web.Mvc.JsonNetResult">
+            <summary>
+            Represents a class that is used to send JSON-formatted content to the response using Json.NET serializer.
+            </summary>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.JsonNetResult.#ctor">
+            <summary>
+            Creates a new instance of the JsonNetResult.
+            </summary>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.JsonNetResult.ExecuteResult(System.Web.Mvc.ControllerContext)">
+            <summary>
+            Process the result of the action by serializing the data object-graph into the response stream.
+            </summary>
+            <param name="context">
+            The context in which the result is executed. The context information includes the controller, HTTP content, request context, and route data.
+            </param>
+        </member>
+        <member name="P:SSW.Framework.Web.Mvc.JsonNetResult.ContentEncoding">
+            <summary>
+            Gets or sets the encoding for the content.
+            </summary>
+        </member>
+        <member name="P:SSW.Framework.Web.Mvc.JsonNetResult.ContentType">
+            <summary>
+            Gets or sets the response content type.
+            </summary>
+        </member>
+        <member name="P:SSW.Framework.Web.Mvc.JsonNetResult.Data">
+            <summary>
+            gets or sets the object graph that's to be serialized.
+            </summary>
+        </member>
+        <member name="P:SSW.Framework.Web.Mvc.JsonNetResult.SerializerSettings">
+            <summary>
+            Gets or sets the serializer settings for the Json.NET serializer.
+            </summary>
+        </member>
+        <member name="P:SSW.Framework.Web.Mvc.JsonNetResult.Formatting">
+            <summary>
+            Gets or sets the formatting settings for the Json.NET serialzer.
+            </summary>
+        </member>
+        <member name="T:SSW.Framework.Web.Mvc.Security.WebCacheAuthorizationProvider">
+            <summary>
+            Authorization provider that caches the IPrincipal instance.
+            </summary>
+        </member>
+        <member name="T:SSW.Framework.Web.Mvc.Security.IAuthorizationProvider">
+            <summary>
+            Authorization Provider Interface
+            </summary>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.Security.IAuthorizationProvider.GetPrincipal(System.Security.Principal.IIdentity)">
+            <summary>
+            Get an IPrincipal object
+            </summary>
+            <param name="identity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.TwitterBootstrapExtensions.ValidationSummaryBootstrap(System.Web.Mvc.HtmlHelper,System.Boolean)">
+            <summary>
+            From: http://stackoverflow.com/questions/13016929/any-way-to-implement-twitter-bootstrap-using-mvc-4-validation-instead-of-using
+            Returns an error alert that lists each model error, much like the standard ValidationSummary only with
+            altered markup for the Twitter bootstrap styles.
+            </summary>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.TwitterBootstrapExtensions.ValidationSummaryBootstrap(System.Web.Mvc.HtmlHelper)">
+            <summary>
+            Overload allowing no arguments.
+            </summary>
+        </member>
+        <member name="T:SSW.Framework.Web.Mvc.SelectListItem`1">
+            <summary>
+            Extend SelectListItem with a Generic Typed Value. 
+            Uses ConvertHelper to perform type conversion
+            </summary>
+            <typeparam name="TValue"></typeparam>
+        </member>
+        <member name="T:SSW.Framework.Web.Mvc.SelectListItemExtensions">
+            <summary>
+            Extensions for IEnumerable collectiojns of SelectListItem 
+            </summary>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.SelectListItemExtensions.SelectValue(System.Collections.Generic.IEnumerable{System.Web.Mvc.SelectListItem},System.String)">
+            <summary>
+            Set selected property on matching SelectListItem within a collecion 
+            </summary>
+            <param name="items">Collection of SelectListItem</param>
+            <param name="value">value to match</param>
+            <returns></returns>
+        </member>
+        <member name="M:SSW.Framework.Web.Mvc.SelectListItemExtensions.SelectValue``1(System.Collections.Generic.IEnumerable{SSW.Framework.Web.Mvc.SelectListItem{``0}},``0)">
+            <summary>
+            Set selected property on matching SelectListItem within a collecion.
+            This overload supports generic typed value
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="items"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

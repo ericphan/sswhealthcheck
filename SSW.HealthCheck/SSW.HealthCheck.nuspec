@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>SSW.HealthCheck</id>
+    <version>$version$</version>
+    <title>SSW.HealthCheck</title>
+    <authors>Mark Liu</authors>
+    <owners>Mark Liu</owners>
+    <projectUrl>https://github.com/ssw-au/SSW.Framework.Web.Mvc/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SSW Health Check provides a framework to write asynchronous tests to verify the state of a MVC website.</description>
+    <copyright />
+    <language>en-AU</language>
+    <tags>MVC</tags>
+
+    <dependencies>
+      <dependency id="angularjs" version="1.2.2" />
+      <dependency id="bootstrap" version="3.0.0" />
+      <dependency id="Microsoft.AspNet.SignalR" version="2.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="Scripts\ssw.healthcheck.js" target="content\Scripts\" />
+  </files>
+</package>

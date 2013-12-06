@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SSW.HealthCheck.TestMonitor>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@section scripts {
+    <style type="text/css">
+        h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+    </style>
+    <link type="text/css" rel="@Url.Content("~/Scripts/angular-csp.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/angular.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.signalR-2.0.0.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/SignalR/hubs")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ssw.healthcheck.js")"></script>
+
+    <script type="text/javascript">
+        var t = [@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))];
+        var hcheck = angular.module('ssw.healthcheck').value('tests', t[0]);
+    </script>
+}
+
+<div id="ng-app" data-ng-app="ssw.healthcheck">
+    <h1>Health Check</h1>
+    <div ng-controller="ZsValidate as controller" class="ng-cloak">
+        <div ng-repeat="model in tests">
+            <div class="panel panel-default" ng-class="{'panel-success': (model.Result != null && model.Result.Success == true), 'panel-danger': (model.Result != null && model.Result.Success == false) }">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        {{sev}}
+                        <span class="glyphicon" ng-class="{'glyphicon-question-sign': model.Result == null, 'glyphicon-ok-sign': model.Result.Success == true, 'glyphicon-exclamation-sign': (model.Result.Success == false) }"></span>
+                        {{model.Name}}
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <p>{{model.Description}}</p>
+                    <hr />
+                    <h4>
+                        {{model.IsRunning ? "Running" : (model.Result == null ? "Pending" : (model.Result.Success ? "Passed" : "Failed" ))}}
+                    </h4>
+                    <p ng-show="model.Result.Message">
+                        {{model.Result.Message}}
+                    </p>
+                    <div class="progress" ng-show="model.IsRunning">
+                        <div class="progress-bar" role="progressbar" ng-style="{width: ((model.Progress.Val - model.Progress.Min) /  (model.Progress.Max -  model.Progress.Min)) * 100 + '%'}">
+                            <span class="sr-only">{{((model.Progress.Val - model.Progress.Min) /  (model.Progress.Max -  model.Progress.Min)) * 100 + '%'}}</span>
+                        </div>
+                    </div>
+                    <table class="table table-hover table-condensed" ng-show="(model.Events && model.Events.length)">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-2">Event Date</th>
+                                <th class="col-sm-8">Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="e in model.Events | filter:{ Message: '!!'}">
+                                <td>{{e.DateTime | date:'short'}}</td>
+                                <td>{{e.Message}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <button class="btn btn-sm" ng-click="controller.Check(model)">Check</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-block">
+            <button class="btn btn-sm btn-primary" ng-click="controller.CheckAll()">Check All</button>
+        </div>
+    </div>
+</div>
