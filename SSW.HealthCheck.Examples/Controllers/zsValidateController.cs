@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
-using SSW.HealthCheck;
 
 namespace SSW.HealthCheck.Examples.Controllers
 {
+	using SSW.HealthCheck.Infrastructure;
+
     public class zsValidateController : Controller
     {
         private static readonly JsonSerializerSettings settings = new JsonSerializerSettings()

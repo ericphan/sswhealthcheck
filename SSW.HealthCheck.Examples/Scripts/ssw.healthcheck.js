@@ -65,7 +65,7 @@ var ssw;
 
                 // signalr
                 $.connection.hub.logging = true;
-                var healthCheckHub = ($.connection).healthCheckHub;
+                var healthCheckHub = $.connection.healthCheckHub;
                 var healthCheckServer = healthCheckHub.server;
                 var healthCheckClient = healthCheckHub.client;
                 healthCheckClient.testCompleted = this.OnTestCompleted;

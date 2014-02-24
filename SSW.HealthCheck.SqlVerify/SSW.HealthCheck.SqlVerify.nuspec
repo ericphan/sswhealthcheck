@@ -1,0 +1,22 @@
+﻿<?xml version="1.0"?>
+<package>
+	<metadata>
+		<id>SSW.HealthCheck.SqlVerify</id>
+		<version>$version$</version>
+		<title>SSW.HealthCheck.SqlVerify</title>
+		<authors>Igor Goldobin</authors>
+		<owners>Igor Goldobin</owners>
+		<projectUrl>https://github.com/ssw-au/SSW.Framework.Web.Mvc/</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>SSW Health Check extension for Sql Verify framework.</description>
+		<copyright />
+		<language>en-AU</language>
+		<tags>MVC</tags>
+
+		<dependencies>
+			<dependency id="SSW.SqlVerify.Core" version="1.0.0" />
+			<dependency id="SSW.HealthCheck.Mvc5" version="1.0.4" />
+			<dependency id="Microsoft.AspNet.Mvc" version="5.0.0" />
+		</dependencies>
+	</metadata>
+</package>

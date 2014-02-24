@@ -154,4 +154,4 @@ declare function input(ngModelBinding: string): angularScenario.Input;
 declare function repeater(selector: string, repeaterDescription?: string): angularScenario.Repeater;
 declare function select(ngModelBinding: string): angularScenario.Select;
 declare function element(selector: string, elementDescription?: string): angularScenario.Element;
-declare var angular: angularScenario.AngularModel;
+declare var angular: ng.IAngularStatic;

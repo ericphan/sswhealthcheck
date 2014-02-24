@@ -6,8 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SSW.HealthCheck
+namespace SSW.HealthCheck.Mvc5
 {
+    using SSW.HealthCheck.Infrastructure;
+
     /// <summary>
     /// Send health check changes and events to a clients via SignalR hub.
     /// </summary>
