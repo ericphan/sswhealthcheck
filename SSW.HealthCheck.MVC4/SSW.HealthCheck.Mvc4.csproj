@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
@@ -81,6 +82,7 @@
   <ItemGroup>
     <Compile Include="HealthCheckHubNotifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UrlHelperExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\ssw.healthcheck.ts" />
@@ -99,13 +101,26 @@
     <None Include="Build\TypeScriptConfiguration.targets">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Controllers\zsValidateController.cs.pp" />
+    <Content Include="Content\healthcheck\angular-csp.css" />
+    <Content Include="Content\healthcheck\bootstrap-theme.min.css" />
+    <Content Include="Content\healthcheck\bootstrap.min.css" />
+    <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\healthcheck\healthcheck.css" />
+    <Content Include="Controllers\HealthCheckController.cs.pp" />
     <Content Include="Hubs\HealthCheckHub.cs.pp" />
+    <None Include="Content\healthcheck\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Content\healthcheck\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Content\healthcheck\fonts\glyphicons-halflings-regular.woff" />
     <None Include="packages.config" />
     <None Include="SSW.HealthCheck.Mvc4.nuspec">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\zsValidate\Index.cshtml" />
+    <Content Include="Scripts\healthcheck\angular.min.js" />
+    <Content Include="Scripts\healthcheck\bootstrap.min.js" />
+    <Content Include="Scripts\healthcheck\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\healthcheck\modernizr-2.6.2.js" />
+    <Content Include="Views\HealthCheck\Index.cshtml" />
+    <Content Include="Views\Shared\_HealthCheckLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SSW.HealthCheck.Infrastructure\SSW.HealthCheck.Infrastructure.csproj">

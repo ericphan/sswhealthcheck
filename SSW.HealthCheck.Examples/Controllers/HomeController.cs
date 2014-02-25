@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SSW.HealthCheck.Examples.Controllers
+namespace SSW.HealthCheck.Mvc5.Examples.Controllers
 {
     public class HomeController : Controller
     {

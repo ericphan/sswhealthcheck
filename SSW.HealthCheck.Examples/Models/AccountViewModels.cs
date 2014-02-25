@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SSW.HealthCheck.Examples.Models
+namespace SSW.HealthCheck.Mvc5.Examples.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

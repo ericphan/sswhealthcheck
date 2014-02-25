@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SSW.HealthCheck.Examples.App_Start.HealthCheckConfig), "PreStart")]
-namespace SSW.HealthCheck.Examples.App_Start 
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SSW.HealthCheck.Mvc5.Examples.App_Start.HealthCheckConfig), "PreStart")]
+namespace SSW.HealthCheck.Mvc5.Examples.App_Start 
 {
 	using SSW.HealthCheck.Infrastructure;
     using SSW.HealthCheck.Infrastructure.Tests;
@@ -25,7 +25,7 @@ namespace SSW.HealthCheck.Examples.App_Start
         {
             svc.Add(new NotDebugTest());
             svc.Add(new DbConnectionTest());
-            svc.Setup<SSW.HealthCheck.Examples.Hubs.HealthCheckHub>();
+            svc.Setup<Hubs.HealthCheckHub>();
         }
     }
 }

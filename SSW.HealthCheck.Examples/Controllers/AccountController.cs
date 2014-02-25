@@ -8,9 +8,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using SSW.HealthCheck.Examples.Models;
+using SSW.HealthCheck.Mvc5.Examples.Models;
 
-namespace SSW.HealthCheck.Examples.Controllers
+namespace SSW.HealthCheck.Mvc5.Examples.Controllers
 {
     [Authorize]
     public class AccountController : Controller

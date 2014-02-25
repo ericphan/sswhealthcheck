@@ -25,7 +25,7 @@ namespace $rootnamespace$.App_Start
         {
             svc.Add(new NotDebugTest());
             svc.Add(new DbConnectionTest());
-            svc.Setup<$rootnamespace$.Hubs.HealthCheckHub>();
+            svc.Setup<Hubs.HealthCheckHub>();
         }
     }
 }

@@ -1,8 +1,8 @@
-var ssw;
+﻿var ssw;
 (function (ssw) {
     (function (healthcheck) {
-        var ZsValidateController = (function () {
-            function ZsValidateController($scope, $http, tests) {
+        var HealthCheckController = (function () {
+            function HealthCheckController($scope, $http, tests) {
                 var _this = this;
                 $scope.tests = tests;
 
@@ -15,7 +15,7 @@ var ssw;
 
                 this.$http = $http;
                 this.Check = function (model) {
-                    $http.get("/zsValidate/Check?Key=" + model.Key).success(function (data, status, headers, config) {
+                    $http.get("/HealthCheck/Check?Key=" + model.Key).success(function (data, status, headers, config) {
                         // model.Result = data;
                         console.log(data);
                     }).error(function (data, status, headers, config) {
@@ -74,14 +74,14 @@ var ssw;
                 healthCheckClient.testProgress = this.OnTestProgress;
                 $.connection.hub.start();
             }
-            return ZsValidateController;
+            return HealthCheckController;
         })();
-        healthcheck.ZsValidateController = ZsValidateController;
+        healthcheck.HealthCheckController = HealthCheckController;
     })(ssw.healthcheck || (ssw.healthcheck = {}));
     var healthcheck = ssw.healthcheck;
 
     var hcheck = angular.module('ssw.healthcheck', []);
     hcheck.value('tests', []);
-    hcheck.controller('ZsValidate', ['$scope', '$http', 'tests', ssw.healthcheck.ZsValidateController]);
+    hcheck.controller('HealthCheck', ['$scope', '$http', 'tests', ssw.healthcheck.HealthCheckController]);
 })(ssw || (ssw = {}));
 //# sourceMappingURL=ssw.healthcheck.js.map

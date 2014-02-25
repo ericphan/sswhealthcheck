@@ -30,7 +30,7 @@ module ssw {
             Val: number
         }
 
-        export class ZsValidateController {
+        export class HealthCheckController {
             $http: any;
             Check: (model: ITestMonitor) => void;
             CheckAll: () => void;
@@ -51,7 +51,7 @@ module ssw {
                 
                 this.$http = $http;
                 this.Check = (model: ITestMonitor) => {
-                    $http.get("/zsValidate/Check?Key=" + model.Key)
+                    $http.get("/HealthCheck/Check?Key=" + model.Key)
                         .success((data: any, status: any, headers: any, config: any) => {
                             // model.Result = data;
                             console.log(data);
@@ -117,5 +117,5 @@ module ssw {
 
     var hcheck = angular.module('ssw.healthcheck', <string[]>[]);
     hcheck.value('tests', <string[]>[]);
-    hcheck.controller('ZsValidate', ['$scope', '$http', 'tests', ssw.healthcheck.ZsValidateController]);
+    hcheck.controller('HealthCheck', ['$scope', '$http', 'tests', ssw.healthcheck.HealthCheckController]);
 }
