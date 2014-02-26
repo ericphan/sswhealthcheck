@@ -8,8 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5B59D4
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.Infrastructure", "SSW.HealthCheck.Infrastructure\SSW.HealthCheck.Infrastructure.csproj", "{263834F9-36F6-4B31-A775-4745B13D602C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.Mvc4", "SSW.HealthCheck.MVC4\SSW.HealthCheck.Mvc4.csproj", "{BA77C192-83C3-479B-8FC2-7FCCADEDF158}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.SqlVerify", "SSW.HealthCheck.SqlVerify\SSW.HealthCheck.SqlVerify.csproj", "{B6485C1F-67D5-4BE3-BEE0-36DE095A5FC4}"
@@ -26,16 +24,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.Mvc5", "SSW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.Mvc5.Examples", "SSW.HealthCheck.Examples\SSW.HealthCheck.Mvc5.Examples.csproj", "{BA29B90E-E2F0-49A0-8D00-3E572905151D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.Infrastructure", "SSW.HealthCheck.Infrastructure\SSW.HealthCheck.Infrastructure.csproj", "{263834F9-36F6-4B31-A775-4745B13D602C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{263834F9-36F6-4B31-A775-4745B13D602C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{263834F9-36F6-4B31-A775-4745B13D602C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{263834F9-36F6-4B31-A775-4745B13D602C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{263834F9-36F6-4B31-A775-4745B13D602C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BA77C192-83C3-479B-8FC2-7FCCADEDF158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA77C192-83C3-479B-8FC2-7FCCADEDF158}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA77C192-83C3-479B-8FC2-7FCCADEDF158}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,6 +52,10 @@ Global
 		{BA29B90E-E2F0-49A0-8D00-3E572905151D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA29B90E-E2F0-49A0-8D00-3E572905151D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA29B90E-E2F0-49A0-8D00-3E572905151D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{263834F9-36F6-4B31-A775-4745B13D602C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{263834F9-36F6-4B31-A775-4745B13D602C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{263834F9-36F6-4B31-A775-4745B13D602C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{263834F9-36F6-4B31-A775-4745B13D602C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -123,13 +123,13 @@
     <Content Include="Views\Shared\_HealthCheckLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SSW.HealthCheck.Infrastructure\SSW.HealthCheck.Infrastructure.csproj">
       <Project>{263834f9-36f6-4b31-a775-4745b13d602c}</Project>
       <Name>SSW.HealthCheck.Infrastructure</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

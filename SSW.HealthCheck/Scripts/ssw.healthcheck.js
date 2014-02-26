@@ -1,4 +1,4 @@
-﻿var ssw;
+var ssw;
 (function (ssw) {
     (function (healthcheck) {
         var HealthCheckController = (function () {
