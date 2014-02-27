@@ -1,5 +1,7 @@
 ﻿namespace SSW.HealthCheck.Infrastructure
 {
+    using System.Collections.Generic;
+
     public interface ITest
     {
         /// <summary>
@@ -23,5 +25,11 @@
         /// </summary>
         /// <param name="context">The context.</param>
         void Test(ITestContext context);
+
+        /// <summary>
+        /// Gets the widget actions.
+        /// </summary>
+        /// <value>The test actions.</value>
+        IEnumerable<TestAction> TestActions { get; }
     }
 }

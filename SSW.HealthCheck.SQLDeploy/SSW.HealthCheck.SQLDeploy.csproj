@@ -4,13 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{263834F9-36F6-4B31-A775-4745B13D602C}</ProjectGuid>
+    <ProjectGuid>{49A47D42-A20F-4CFC-BE39-0E2960742131}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SSW.HealthCheck.Infrastructure</RootNamespace>
-    <AssemblyName>SSW.HealthCheck.Infrastructure</AssemblyName>
+    <RootNamespace>SSW.HealthCheck.SQLDeploy</RootNamespace>
+    <AssemblyName>SSW.HealthCheck.SQLDeploy</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,10 +32,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="SSW.Data.Framework, Version=10.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SSW.SQLDeploy.Core.1.0.1.0\lib\net45\SSW.Data.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SSW.SQLDeploy.Core, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SSW.SQLDeploy.Core.1.0.1.0\lib\net45\SSW.SQLDeploy.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SSW.SqlVerify.Core">
+      <HintPath>..\packages\SSW.SqlVerify.Core.1.0.0.0\lib\net45\SSW.SqlVerify.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,26 +55,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HealthAssert.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="HealthCheckService.cs" />
-    <Compile Include="HealthException.cs" />
-    <Compile Include="ITest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestAction.cs">
-      <SubType>Code</SubType>
+    <Compile Include="SqlDeployDbHelper.cs" />
+    <Compile Include="SQLDeployTest.cs" />
+    <Compile Include="Titles.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Titles.resx</DependentUpon>
     </Compile>
-    <Compile Include="TestContext.cs" />
-    <Compile Include="TestEvent.cs" />
-    <Compile Include="TestMonitor.cs" />
-    <Compile Include="TestProgress.cs" />
-    <Compile Include="TestResult.cs" />
-    <Compile Include="Tests\DbConnectionTest.cs" />
-    <Compile Include="Tests\GenericTest.cs" />
-    <Compile Include="Tests\NotDebugTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="SSW.HealthCheck.SQLDeploy.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SSW.HealthCheck.Infrastructure\SSW.HealthCheck.Infrastructure.csproj">
+      <Project>{263834f9-36f6-4b31-a775-4745b13d602c}</Project>
+      <Name>SSW.HealthCheck.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Titles.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Titles.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

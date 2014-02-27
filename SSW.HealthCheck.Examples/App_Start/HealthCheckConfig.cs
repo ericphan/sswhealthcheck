@@ -6,9 +6,15 @@ using System.Web;
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SSW.HealthCheck.Mvc5.Examples.App_Start.HealthCheckConfig), "PreStart")]
 namespace SSW.HealthCheck.Mvc5.Examples.App_Start 
 {
-	using SSW.HealthCheck.Infrastructure;
+    using System.Web.Hosting;
+
+    using Microsoft.Ajax.Utilities;
+
+    using SSW.HealthCheck.Infrastructure;
     using SSW.HealthCheck.Infrastructure.Tests;
     using SSW.HealthCheck.Mvc5;
+    using SSW.HealthCheck.SQLDeploy;
+    using SSW.SQLDeploy.Core;
 
     public static class HealthCheckConfig 
     {
@@ -25,6 +31,12 @@ namespace SSW.HealthCheck.Mvc5.Examples.App_Start
         {
             svc.Add(new NotDebugTest());
             svc.Add(new DbConnectionTest());
+            
+            var configPath = HostingEnvironment.MapPath("~/App_Data/SqlDeploy.config");
+            var sqlDeployConfig = SqlDeployConfigurationHelper.GetSqlDeployConfiguration(configPath);
+            var settings = new SqlDeploySettings(sqlDeployConfig);
+            svc.Add(new SQLDeployTest(settings));
+
             svc.Setup<Hubs.HealthCheckHub>();
         }
     }

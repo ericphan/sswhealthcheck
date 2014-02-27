@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.0.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
@@ -62,9 +65,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.2.0.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
+    <Reference Include="SSW.Data.Framework, Version=10.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SSW.SQLDeploy.Core.1.0.1.0\lib\net45\SSW.Data.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="SSW.HealthCheck.Mvc5, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.4.0\lib\net45\SSW.HealthCheck.Mvc5.dll</HintPath>
+    </Reference>
+    <Reference Include="SSW.HealthCheck.SQLDeploy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SSW.HealthCheck.SQLDeploy.1.0.0.0\lib\net45\SSW.HealthCheck.SQLDeploy.dll</HintPath>
+    </Reference>
+    <Reference Include="SSW.SQLDeploy.Core, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SSW.SQLDeploy.Core.1.0.1.0\lib\net45\SSW.SQLDeploy.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SSW.SqlVerify.Core">
+      <HintPath>..\packages\SSW.SqlVerify.Core.1.0.0.0\lib\net45\SSW.SqlVerify.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -177,7 +195,9 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\HealthCheckConfig.cs" />
+    <Compile Include="App_Start\HealthCheckConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -243,6 +263,7 @@
     <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="App_Data\SqlDeploy.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\healthcheck\angular.min.js" />
     <Content Include="Scripts\healthcheck\bootstrap.min.js" />
@@ -508,6 +529,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ssw.healthcheck.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="SQLDeployScripts\0001_WaitAWhile.sql" />
+    <Content Include="SQLDeployScripts\0002_WaitAWhile2.sql" />
+    <Content Include="SQLDeployScripts\0003_WaitAWhile3.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -537,9 +561,7 @@
     <Content Include="Views\Shared\_HealthCheckLayout.cshtml" />
     <Content Include="Views\HealthCheck\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />

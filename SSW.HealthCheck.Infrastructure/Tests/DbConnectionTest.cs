@@ -1,6 +1,7 @@
 ﻿namespace SSW.HealthCheck.Infrastructure.Tests
 {
     using System;
+    using System.Collections.Generic;
     using System.Configuration;
     using System.Data.Common;
     using System.Linq;
@@ -50,6 +51,18 @@
         /// </summary>
         /// <value>The exclude.</value>
         public string[] Exclude { get; set; }
+
+        /// <summary>
+        /// Gets the widget actions.
+        /// </summary>
+        /// <value>The test actions.</value>
+        public IEnumerable<TestAction> TestActions
+        {
+            get
+            {
+                return null;
+            }
+        }
 
         /// <summary>
         /// Run the health check.

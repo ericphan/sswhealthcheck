@@ -2,6 +2,8 @@
 
 namespace SSW.HealthCheck.Infrastructure.Tests
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Generic test class that can be extended
     /// </summary>
@@ -33,6 +35,18 @@ namespace SSW.HealthCheck.Infrastructure.Tests
         /// </summary>
         /// <value></value>
         public string Description { get;private set; }
+
+        /// <summary>
+        /// Gets the widget actions.
+        /// </summary>
+        /// <value>The test actions.</value>
+        public IEnumerable<TestAction> TestActions
+        {
+            get
+            {
+                return null;
+            }
+        }
 
         /// <summary>
         /// Gets a value that indicate if the test is to run by default.

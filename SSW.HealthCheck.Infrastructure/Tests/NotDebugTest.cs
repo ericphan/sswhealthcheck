@@ -2,6 +2,8 @@
 
 namespace SSW.HealthCheck.Infrastructure.Tests
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Check if system is in debug mode
     /// </summary>
@@ -23,6 +25,18 @@ namespace SSW.HealthCheck.Infrastructure.Tests
         public string Description
         {
             get { return "Verify that debug mode is off on production."; }
+        }
+
+        /// <summary>
+        /// Gets the widget actions.
+        /// </summary>
+        /// <value>The test actions.</value>
+        public IEnumerable<TestAction> TestActions
+        {
+            get
+            {
+                return null;
+            }
         }
 
         /// <summary>

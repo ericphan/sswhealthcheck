@@ -1,6 +1,7 @@
 ﻿namespace SSW.HealthCheck.SqlVerify
 {
     using System;
+    using System.Collections.Generic;
 
     using SSW.HealthCheck.Infrastructure;
     using SSW.SqlVerify.Core;
@@ -129,6 +130,18 @@
             if (!result)
             {
                 Assert.Fails(Titles.FailureMessage);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the widget actions.
+        /// </summary>
+        /// <value>The widget actions.</value>
+        public IEnumerable<TestAction> TestActions
+        {
+            get
+            {
+                return null;
             }
         }
     }
