@@ -8,8 +8,6 @@ namespace SSW.HealthCheck.Mvc5.Examples.App_Start
 {
     using System.Web.Hosting;
 
-    using Microsoft.Ajax.Utilities;
-
     using SSW.HealthCheck.Infrastructure;
     using SSW.HealthCheck.Infrastructure.Tests;
     using SSW.HealthCheck.Mvc5;
@@ -31,7 +29,7 @@ namespace SSW.HealthCheck.Mvc5.Examples.App_Start
         {
             svc.Add(new NotDebugTest());
             svc.Add(new DbConnectionTest());
-            
+
             var configPath = HostingEnvironment.MapPath("~/App_Data/SqlDeploy.config");
             var sqlDeployConfig = SqlDeployConfigurationHelper.GetSqlDeployConfiguration(configPath);
             var settings = new SqlDeploySettings(sqlDeployConfig);

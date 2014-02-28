@@ -124,19 +124,19 @@
                     var reconcileResult = this.sqlDeploy.ReconcileDatabase(database.DatabaseName);
                     if (upToDate && reconcileResult.IsSuccessful)
                     {
-                        context.WriteLine(Titles.DbIsUpToDate, dbName);
+                        context.WriteLine(EventType.Success, Titles.DbIsUpToDate, dbName);
                     }
                     else
                     {
                         if (!upToDate)
                         {
-                            context.WriteLine(Titles.DbCheckFailed, dbName, Titles.SchemaNotUpToDate);
+                            context.WriteLine(EventType.Error, Titles.DbCheckFailed, dbName, Titles.SchemaNotUpToDate);
                             var result = new SqlDeployResult { IsSuccessful = false, DatabaseName = dbName, Exceptions = new List<Exception> { new Exception(Titles.SchemaNotUpToDate) } };
                             failedChecks.Add(result);
                         }
                         else
                         {
-                            context.WriteLine(Titles.DbCheckFailed, dbName, Titles.SchemaChanged);
+                            context.WriteLine(EventType.Error, Titles.DbCheckFailed, dbName, Titles.SchemaChanged);
                             failedChecks.Add(reconcileResult);
                         }
                     }

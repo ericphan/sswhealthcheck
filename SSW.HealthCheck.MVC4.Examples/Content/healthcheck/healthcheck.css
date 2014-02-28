@@ -40,3 +40,27 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.status-header,
+.status-col-error,
+.status-col-info,
+.status-col-warning,
+.status-col-ok {
+    text-align: center;
+}
+
+.status-col-error {
+    color: #a94442;
+}
+
+.status-col-info {
+    color: #31708f;
+}
+
+.status-col-warning {
+    color: #8a6d3b;
+}
+
+.status-col-ok {
+    color: #3c763d;
+}

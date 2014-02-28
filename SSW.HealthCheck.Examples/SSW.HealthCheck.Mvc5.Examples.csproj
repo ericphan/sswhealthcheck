@@ -195,9 +195,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\HealthCheckConfig.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="App_Start\HealthCheckConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -260,10 +258,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="App_Data\SqlDeploy.config" />
     <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="App_Data\SqlDeploy.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\healthcheck\angular.min.js" />
     <Content Include="Scripts\healthcheck\bootstrap.min.js" />

@@ -93,15 +93,23 @@
 
                         using (var cnn = factory.CreateConnection())
                         {
-                            cnn.ConnectionString = csBuilder.ToString();
-                            cnn.Open();
+                            if (cnn == null)
+                            {
+                                ctx.WriteLine(EventType.Error, "{0} failed: {1}", setting.Name, "Cannot create connection.");
+                                failedSettings.Add(setting);
+                            }
+                            else
+                            {
+                                cnn.ConnectionString = csBuilder.ToString();
+                                cnn.Open();
+                            }
                         }
 
-                        ctx.WriteLine("{0} connected successfully.");
+                        ctx.WriteLine(EventType.Success, "{0} connected successfully.", setting.Name);
                     }
                     catch (Exception ex)
                     {
-                        ctx.WriteLine("{0} failed: {1}", setting.Name, ex.Message);
+                        ctx.WriteLine(EventType.Error, "{0} failed: {1}", setting.Name, ex.Message);
                         failedSettings.Add(setting);
                     }
                     processedCount++;

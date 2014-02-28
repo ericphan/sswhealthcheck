@@ -99,8 +99,8 @@
     <Content Include="Content\healthcheck\bootstrap.min.css" />
     <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\healthcheck\healthcheck.css" />
-    <Content Include="Controllers\HealthCheckController.cs.pp" />
     <Compile Include="HealthCheckHubNotifier.cs" />
+    <Content Include="Controllers\HealthCheckController.cs.pp" />
     <Content Include="Hubs\HealthCheckHub.cs.pp" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="readme.txt" />
@@ -108,7 +108,9 @@
     <Content Include="Scripts\healthcheck\bootstrap.min.js" />
     <Content Include="Scripts\healthcheck\jquery-1.10.2.min.js" />
     <Content Include="Scripts\healthcheck\modernizr-2.6.2.js" />
-    <Content Include="Views\HealthCheck\Index.cshtml" />
+    <Content Include="Views\HealthCheck\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Views\Shared\_HealthCheckLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>

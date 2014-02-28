@@ -145,12 +145,13 @@
             });
         }
 
-        public void WriteLine(string message)
+        public void WriteLine(string message, EventType type = EventType.Info)
         {
             this.OnTestEvent(new TestEvent()
             {
                 DateTime = DateTime.Now,
-                Message = message
+                Message = message,
+                EventType = type
             });
         }
 

@@ -20,7 +20,7 @@
 
 <div id="ng-app" data-ng-app="ssw.healthcheck">
     <h1>Health Check</h1>
-    <div ng-controller="ZsValidate as controller" class="ng-cloak">
+    <div ng-controller="HealthCheck as controller" class="ng-cloak">
         <div ng-repeat="model in tests">
             <div class="panel panel-default" ng-class="{'panel-success': (model.Result != null && model.Result.Success == true), 'panel-danger': (model.Result != null && model.Result.Success == false) }">
                 <div class="panel-heading">
@@ -47,12 +47,16 @@
                     <table class="table table-hover table-condensed" ng-show="(model.Events && model.Events.length)">
                         <thead>
                             <tr>
-                                <th class="col-sm-2">Event Date</th>
+                                <th class="col-sm-1 status-header">Status</th>
+                                <th class="col-sm-3">Event Date</th>
                                 <th class="col-sm-8">Message</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="e in model.Events | filter:{ Message: '!!'}">
+                                <td ng-class="{'status-col-info': e.EventType == 0, 'status-col-ok': e.EventType == 3, 'status-col-error': (e.EventType == 2), 'status-col-warning': (e.EventType == 1) }">
+                                    <span class="glyphicon" ng-class="{'glyphicon-info-sign': e.EventType == 0, 'glyphicon-ok': e.EventType == 3, 'glyphicon-remove': (e.EventType == 2), 'glyphicon-exclamation-sign': (e.EventType == 1) }"></span>
+                                </td>
                                 <td>{{e.DateTime | date:'short'}}</td>
                                 <td>{{e.Message}}</td>
                             </tr>
