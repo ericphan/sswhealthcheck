@@ -35,7 +35,7 @@ namespace $rootnamespace$.Controllers
         public ActionResult Check(string key)
         {
             var m = HealthCheckService.Default.GetByKey(key);
-            m.RunAsync();
+            m.Run();
             var json = JsonConvert.SerializeObject(m, settings);
             return this.Content(json, "application/json");
         }

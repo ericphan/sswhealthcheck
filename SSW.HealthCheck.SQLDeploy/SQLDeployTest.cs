@@ -113,9 +113,10 @@
             var failedChecks = new System.Collections.Concurrent.ConcurrentBag<SqlDeployResult>();
             var databasesCount = this.sqlDeploy.Settings.Databases.Count();
             var processedCount = 0;
+            var databases = this.sqlDeploy.Settings.Databases.ToList();
             context.UpdateProgress(0, processedCount, databasesCount);
             Parallel.ForEach(
-                this.sqlDeploy.Settings.Databases,
+                databases,
                 database =>
                 {
                     var csBuilder = new SqlConnectionStringBuilder(database.ConnectionString);

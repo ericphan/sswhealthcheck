@@ -74,7 +74,7 @@
             var settings = config.ConnectionStrings.ConnectionStrings.OfType<ConnectionStringSettings>()
                 .Where(x =>
                     (this.Exclude == null || this.Exclude.Length == 0 || !this.Exclude.Contains(x.Name)) &&
-                    (this.Include == null || this.Include.Length == 0 || this.Include.Contains(x.Name)));
+                    (this.Include == null || this.Include.Length == 0 || this.Include.Contains(x.Name))).ToList();
 
             var failedSettings = new System.Collections.Concurrent.ConcurrentBag<ConnectionStringSettings>();
             var settingsCount = settings.Count();

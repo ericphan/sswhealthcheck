@@ -73,9 +73,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.4.0\lib\net45\SSW.HealthCheck.Mvc5.dll</HintPath>
     </Reference>
-    <Reference Include="SSW.HealthCheck.SQLDeploy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SSW.HealthCheck.SQLDeploy, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SSW.HealthCheck.SQLDeploy.1.0.0.0\lib\net45\SSW.HealthCheck.SQLDeploy.dll</HintPath>
+      <HintPath>..\packages\SSW.HealthCheck.SQLDeploy.1.0.1.0\lib\net45\SSW.HealthCheck.SQLDeploy.dll</HintPath>
     </Reference>
     <Reference Include="SSW.SQLDeploy.Core, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

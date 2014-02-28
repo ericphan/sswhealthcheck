@@ -28,6 +28,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.Infrastruct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.SQLDeploy", "SSW.HealthCheck.SQLDeploy\SSW.HealthCheck.SQLDeploy.csproj", "{49A47D42-A20F-4CFC-BE39-0E2960742131}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NugetPackages", "NugetPackages", "{CE95A76C-BC53-4558-8E1B-518E272E4054}"
+	ProjectSection(SolutionItems) = preProject
+		SSW.HealthCheck.Mvc4.1.0.0.0.nupkg = SSW.HealthCheck.Mvc4.1.0.0.0.nupkg
+		SSW.HealthCheck.Mvc4.1.0.5.0.nupkg = SSW.HealthCheck.Mvc4.1.0.5.0.nupkg
+		SSW.HealthCheck.Mvc4.1.0.6.0.nupkg = SSW.HealthCheck.Mvc4.1.0.6.0.nupkg
+		SSW.HealthCheck.Mvc5.1.0.4.0.nupkg = SSW.HealthCheck.Mvc5.1.0.4.0.nupkg
+		SSW.HealthCheck.Mvc5.1.0.5.0.nupkg = SSW.HealthCheck.Mvc5.1.0.5.0.nupkg
+		SSW.HealthCheck.Mvc5.1.0.6.0.nupkg = SSW.HealthCheck.Mvc5.1.0.6.0.nupkg
+		SSW.HealthCheck.SQLDeploy.1.0.0.0.nupkg = SSW.HealthCheck.SQLDeploy.1.0.0.0.nupkg
+		SSW.HealthCheck.SQLDeploy.1.0.1.0.nupkg = SSW.HealthCheck.SQLDeploy.1.0.1.0.nupkg
+		SSW.HealthCheck.SqlVerify.1.1.0.0.nupkg = SSW.HealthCheck.SqlVerify.1.1.0.0.nupkg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +85,7 @@ Global
 		{BA77C192-83C3-479B-8FC2-7FCCADEDF158} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
 		{58615BD3-F745-4CD7-96E7-9914EFF0F313} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
 		{49A47D42-A20F-4CFC-BE39-0E2960742131} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
+		{CE95A76C-BC53-4558-8E1B-518E272E4054} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
 		{BB1E681B-D725-48D1-B0FD-AADADD6A56EB} = {BD071D33-8F9A-42B9-910E-EDB2BB9D2487}
 		{BA29B90E-E2F0-49A0-8D00-3E572905151D} = {BD071D33-8F9A-42B9-910E-EDB2BB9D2487}
 	EndGlobalSection
