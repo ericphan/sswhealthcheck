@@ -24,5 +24,6 @@
 		<file src="Content\healthcheck\fonts\glyphicons-halflings-regular.eot" target="content\Content\healthcheck\fonts\" />
 		<file src="Content\healthcheck\fonts\glyphicons-halflings-regular.ttf" target="content\Content\healthcheck\fonts\" />
 		<file src="Content\healthcheck\fonts\glyphicons-halflings-regular.woff" target="content\Content\healthcheck\fonts\" />
+		<file src="$OutputPath$SSW.HealthCheck.Infrastructure.dll" target="lib\net45" />
 	</files>
 </package>
