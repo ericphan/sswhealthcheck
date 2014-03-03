@@ -69,9 +69,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SSW.SQLDeploy.Core.1.0.1.0\lib\net45\SSW.Data.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="SSW.HealthCheck.Mvc5, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SSW.HealthCheck.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.4.0\lib\net45\SSW.HealthCheck.Mvc5.dll</HintPath>
+      <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.9.0\lib\net45\SSW.HealthCheck.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="SSW.HealthCheck.Mvc5, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.9.0\lib\net45\SSW.HealthCheck.Mvc5.dll</HintPath>
     </Reference>
     <Reference Include="SSW.HealthCheck.SQLDeploy, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -556,19 +560,12 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\Shared\_HealthCheckLayout.cshtml" />
     <Content Include="Views\HealthCheck\Index.cshtml" />
+    <Content Include="Views\Shared\_HealthCheckLayout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SSW.HealthCheck.Infrastructure\SSW.HealthCheck.Infrastructure.csproj">
-      <Project>{263834f9-36f6-4b31-a775-4745b13d602c}</Project>
-      <Name>SSW.HealthCheck.Infrastructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

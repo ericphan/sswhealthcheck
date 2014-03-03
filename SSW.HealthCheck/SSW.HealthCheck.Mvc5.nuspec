@@ -6,7 +6,7 @@
 		<title>SSW.HealthCheck.Mvc5</title>
 		<authors>Mark Liu</authors>
 		<owners>Mark Liu</owners>
-		<projectUrl>https://github.com/ssw-au/SSW.Framework.Web.Mvc/</projectUrl>
+		<projectUrl>https://www.sswhealthcheck.com</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>SSW Health Check provides a framework to write asynchronous tests to verify the state of a MVC website.</description>
 		<copyright />

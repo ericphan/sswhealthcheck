@@ -1,7 +1,9 @@
 ﻿namespace SSW.HealthCheck.Infrastructure
 {
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -42,7 +44,7 @@
         /// </summary>
         public TestProgress Progress { get; private set; }
 
-        public IList<TestEvent> Events { get; private set; }
+        public List<TestEvent> Events { get; private set; }
 
         public TestResult Result { get; private set; }
 
@@ -58,6 +60,15 @@
         private TestResult RunCore()
         {
             this.Events.Clear();
+            //while (this.Events.Any())
+            //{
+            //    TestEvent result;
+            //    if (!this.Events.TryDequeue(out result))
+            //    {
+            //        break;
+            //    }
+            //}
+
             this.Result = null;
             this.OnStarted();
 
@@ -126,6 +137,7 @@
         protected void OnTestEvent(TestEvent e)
         {
             this.Events.Add(e);
+            //this.Events.Enqueue(e);
 
             if (EventReceived != null)
             {

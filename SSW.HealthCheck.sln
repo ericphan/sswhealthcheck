@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5B59D44B-94FE-498C-9784-D4F59B69261D}"
 	ProjectSection(SolutionItems) = preProject
@@ -33,9 +33,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NugetPackages", "NugetPacka
 		SSW.HealthCheck.Mvc4.1.0.0.0.nupkg = SSW.HealthCheck.Mvc4.1.0.0.0.nupkg
 		SSW.HealthCheck.Mvc4.1.0.5.0.nupkg = SSW.HealthCheck.Mvc4.1.0.5.0.nupkg
 		SSW.HealthCheck.Mvc4.1.0.6.0.nupkg = SSW.HealthCheck.Mvc4.1.0.6.0.nupkg
+		SSW.HealthCheck.Mvc4.1.0.8.0.nupkg = SSW.HealthCheck.Mvc4.1.0.8.0.nupkg
 		SSW.HealthCheck.Mvc5.1.0.4.0.nupkg = SSW.HealthCheck.Mvc5.1.0.4.0.nupkg
 		SSW.HealthCheck.Mvc5.1.0.5.0.nupkg = SSW.HealthCheck.Mvc5.1.0.5.0.nupkg
 		SSW.HealthCheck.Mvc5.1.0.6.0.nupkg = SSW.HealthCheck.Mvc5.1.0.6.0.nupkg
+		SSW.HealthCheck.Mvc5.1.0.8.0.nupkg = SSW.HealthCheck.Mvc5.1.0.8.0.nupkg
 		SSW.HealthCheck.SQLDeploy.1.0.0.0.nupkg = SSW.HealthCheck.SQLDeploy.1.0.0.0.nupkg
 		SSW.HealthCheck.SQLDeploy.1.0.1.0.nupkg = SSW.HealthCheck.SQLDeploy.1.0.1.0.nupkg
 		SSW.HealthCheck.SqlVerify.1.1.0.0.nupkg = SSW.HealthCheck.SqlVerify.1.1.0.0.nupkg
@@ -80,7 +82,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{263834F9-36F6-4B31-A775-4745B13D602C} = {E0B2B839-C54C-4CDA-A51A-E431E2F49C3D}
 		{B6485C1F-67D5-4BE3-BEE0-36DE095A5FC4} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
 		{BA77C192-83C3-479B-8FC2-7FCCADEDF158} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
 		{58615BD3-F745-4CD7-96E7-9914EFF0F313} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
@@ -88,5 +89,6 @@ Global
 		{CE95A76C-BC53-4558-8E1B-518E272E4054} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
 		{BB1E681B-D725-48D1-B0FD-AADADD6A56EB} = {BD071D33-8F9A-42B9-910E-EDB2BB9D2487}
 		{BA29B90E-E2F0-49A0-8D00-3E572905151D} = {BD071D33-8F9A-42B9-910E-EDB2BB9D2487}
+		{263834F9-36F6-4B31-A775-4745B13D602C} = {E0B2B839-C54C-4CDA-A51A-E431E2F49C3D}
 	EndGlobalSection
 EndGlobal

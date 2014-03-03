@@ -72,3 +72,46 @@ input[type="checkbox"].input-validation-error {
 .pass-text {
     color: #3c763d;
 }
+
+.info-text {
+    color: #31708f;
+}
+
+.panel-title:hover {
+     cursor: pointer;
+}
+
+.panel-heading a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.panel-heading a:hover {
+    text-decoration: none;
+}
+
+.panel-heading a:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";    
+    float: right; 
+    color: grey; 
+}
+.panel-heading a.collapsed:after {
+    content: "\e080";
+}
+
+.button-all {
+    padding-bottom: 5px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.button-all button {
+    float: right; 
+}
+
+.panel {
+    margin-bottom: 10px !important;
+}
