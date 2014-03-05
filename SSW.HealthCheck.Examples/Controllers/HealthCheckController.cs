@@ -21,14 +21,6 @@ namespace SSW.HealthCheck.Mvc5.Examples.Controllers
         public ActionResult Index()
         {
             var tests = HealthCheckService.Default.GetAll();
-            var tasks = tests.Where(x => x.IsDefault).Select(x => x.RunAsync()).ToArray();
-            Task.WaitAll(tasks);
-
-            var failed = tests.Any(t => t.Result != null && !t.Result.Success);
-            if (failed)
-            {
-                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            }
             return View(tests.OrderBy(x => x.Name));
         }
 

@@ -28,6 +28,14 @@ var ssw;
                         _this.Check(test);
                     }
                 };
+                this.CheckAllDefault = function () {
+                    for (var k in $scope.tests) {
+                        var test = $scope.tests[k];
+                        if (!test.IsRunning && test.IsDefault) {
+                            _this.Check(test);
+                        }
+                    }
+                };
                 this.OnTestStarted = function (x) {
                     var test = testsByKey[x.Key];
                     if (test) {
@@ -72,7 +80,9 @@ var ssw;
                 healthCheckClient.testStarted = this.OnTestStarted;
                 healthCheckClient.testEvent = this.OnTestEvent;
                 healthCheckClient.testProgress = this.OnTestProgress;
-                $.connection.hub.start();
+                $.connection.hub.start().done(function () {
+                    _this.CheckAllDefault();
+                });
             }
             return HealthCheckController;
         })();

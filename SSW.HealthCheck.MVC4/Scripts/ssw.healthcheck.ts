@@ -34,11 +34,12 @@ module ssw {
             $http: any;
             Check: (model: ITestMonitor) => void;
             CheckAll: () => void;
+            CheckAllDefault: () => void;
             OnTestStarted: (x: ITestChanged) => void;
             OnTestCompleted: (x: ITestChanged) => void;
-            OnTestEvent: (x: { Key: string; Event: ITestEvent })  => void;
+            OnTestEvent: (x: { Key: string; Event: ITestEvent }) => void;
             OnTestProgress: (x: { Key: string; Progress: IProgress }) => void;
-            
+
             constructor($scope: any, $http: any, tests: ITestMonitor[]) {
                 $scope.tests = tests;
 
@@ -48,7 +49,7 @@ module ssw {
                     var t = tests[k];
                     testsByKey[t.Key] = t;
                 }
-                
+
                 this.$http = $http;
                 this.Check = (model: ITestMonitor) => {
                     $http.get("/HealthCheck/Check?Key=" + model.Key)
@@ -64,6 +65,14 @@ module ssw {
                     for (var k in $scope.tests) {
                         var test = $scope.tests[k];
                         this.Check(test);
+                    }
+                };
+                this.CheckAllDefault = () => {
+                    for (var k in $scope.tests) {
+                        var test = $scope.tests[k];
+                        if (!test.IsRunning && test.IsDefault) {
+                            this.Check(test);
+                        }
                     }
                 };
                 this.OnTestStarted = (x: ITestChanged) => {
@@ -110,7 +119,9 @@ module ssw {
                 healthCheckClient.testStarted = this.OnTestStarted;
                 healthCheckClient.testEvent = this.OnTestEvent;
                 healthCheckClient.testProgress = this.OnTestProgress;
-                $.connection.hub.start();
+                $.connection.hub.start().done(() => {
+                    this.CheckAllDefault();
+                });
             }
         }
     }
