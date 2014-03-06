@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SSW.HealthCheck.Infrastructure.TestMonitor>
 @{
     ViewBag.Title = "Health Check";
-    Layout = "~/Views/Shared/_HealthCheckLayout.cshtml";
+    Layout = "~/Views/Shared/_HealthCheckLayout2.cshtml";
 }
 
 @section scripts {
@@ -15,7 +15,6 @@
     <script type="text/javascript">
         var t = [@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))];
         var hcheck = angular.module('ssw.healthcheck').value('tests', t[0]);
-        var url = "@Url.Content("~/")";
     </script>
 }
 
@@ -26,8 +25,8 @@
     </div>
 
     <div ng-controller="HealthCheck as controller" class="ng-cloak">
-        <div>
-            <div id="accordion" class="panel-group" ng-repeat="model in tests">
+        <div id="accordion" class="panel-group" style="overflow: hidden;">
+            <div style="display: inline-block; float: left; width: 32.4%; margin-right: 10px;" ng-repeat="model in tests">
                 <div class="panel panel-default" ng-class="{'panel-default': (model.Result != null && model.Result.Success == true), 'panel-danger': (model.Result != null && model.Result.Success == false) }">
                     <div class="panel-heading">
                         <h3 class="panel-title">

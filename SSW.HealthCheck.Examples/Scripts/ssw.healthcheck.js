@@ -15,7 +15,7 @@ var ssw;
 
                 this.$http = $http;
                 this.Check = function (model) {
-                    $http.get("/HealthCheck/Check?Key=" + model.Key).success(function (data, status, headers, config) {
+                    $http.get(($("#ng-app").data("root-path") || "/") + "HealthCheck/Check?Key=" + model.Key).success(function (data, status, headers, config) {
                         // model.Result = data;
                         console.log(data);
                     }).error(function (data, status, headers, config) {

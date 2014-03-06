@@ -1,0 +1,117 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.status-header,
+.status-col-error,
+.status-col-info,
+.status-col-warning,
+.status-col-ok {
+    text-align: center;
+}
+
+.status-col-error {
+    color: #a94442;
+}
+
+.status-col-info {
+    color: #31708f;
+}
+
+.status-col-warning {
+    color: #8a6d3b;
+}
+
+.status-col-ok {
+    color: #2a741a;
+}
+
+.fail-text {
+    color: #a94442;
+}
+
+.pass-text {
+    color: #2a741a;
+}
+
+.info-text {
+    color: #31708f;
+}
+
+.panel-title:hover {
+     cursor: pointer;
+}
+
+.panel-heading a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.panel-heading a:hover {
+    text-decoration: none;
+}
+
+.panel-heading a:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";    
+    float: right; 
+    color: grey; 
+}
+.panel-heading a.collapsed:after {
+    content: "\e080";
+}
+
+.button-all {
+    padding-bottom: 5px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.button-all button {
+    float: right; 
+}
+
+.panel {
+    margin-bottom: 10px !important;
+}

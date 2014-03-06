@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 namespace SSW.HealthCheck.Infrastructure
 {
+    using System.Linq;
+
     public class HealthCheckService
     {
         public static readonly HealthCheckService Default = new HealthCheckService();
@@ -70,9 +72,11 @@ namespace SSW.HealthCheck.Infrastructure
             return monitor;
         }
 
+        public bool OrderByName { get; set; }
+
         public IEnumerable<TestMonitor> GetAll()
         {
-            return monitors.Values;
+            return this.monitors.Values.OrderBy(t => t.Order).ThenBy(t => t.Name);
         }
 
         public TestMonitor GetByKey(string key)

@@ -52,7 +52,7 @@ module ssw {
                 
                 this.$http = $http;
                 this.Check = (model: ITestMonitor) => {
-                    $http.get("/HealthCheck/Check?Key=" + model.Key)
+                    $http.get(($("#ng-app").data("root-path") || "/") + "HealthCheck/Check?Key=" + model.Key)
                         .success((data: any, status: any, headers: any, config: any) => {
                             // model.Result = data;
                             console.log(data);

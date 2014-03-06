@@ -69,17 +69,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SSW.SQLDeploy.Core.1.0.1.0\lib\net45\SSW.Data.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="SSW.HealthCheck.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.11.0\lib\net45\SSW.HealthCheck.Infrastructure.dll</HintPath>
+    <Reference Include="SSW.HealthCheck.Infrastructure">
+      <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.12.0\lib\net45\SSW.HealthCheck.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="SSW.HealthCheck.Mvc5, Version=1.0.11.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.11.0\lib\net45\SSW.HealthCheck.Mvc5.dll</HintPath>
-    </Reference>
-    <Reference Include="SSW.HealthCheck.SQLDeploy, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SSW.HealthCheck.SQLDeploy.1.0.1.0\lib\net45\SSW.HealthCheck.SQLDeploy.dll</HintPath>
+    <Reference Include="SSW.HealthCheck.Mvc5">
+      <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.12.0\lib\net45\SSW.HealthCheck.Mvc5.dll</HintPath>
     </Reference>
     <Reference Include="SSW.SQLDeploy.Core, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -219,6 +213,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\healthcheck-blue\angular-csp.css" />
+    <Content Include="Content\healthcheck-blue\bootstrap.min.css" />
+    <Content Include="Content\healthcheck-blue\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\healthcheck-blue\healthcheck.css" />
+    <Content Include="Content\healthcheck-dark\angular-csp.css" />
+    <Content Include="Content\healthcheck-dark\bootstrap.min.css" />
+    <Content Include="Content\healthcheck-dark\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\healthcheck-dark\healthcheck.css" />
     <Content Include="Content\healthcheck\angular-csp.css" />
     <Content Include="Content\healthcheck\bootstrap-theme.min.css" />
     <Content Include="Content\healthcheck\bootstrap.min.css" />
@@ -266,6 +268,12 @@
     <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\healthcheck-dark\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\healthcheck-dark\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\healthcheck-dark\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\healthcheck-blue\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\healthcheck-blue\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\healthcheck-blue\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\healthcheck\angular.min.js" />
     <Content Include="Scripts\healthcheck\bootstrap.min.js" />
@@ -534,6 +542,12 @@
     <Content Include="SQLDeployScripts\0001_WaitAWhile.sql" />
     <Content Include="SQLDeployScripts\0002_WaitAWhile2.sql" />
     <Content Include="SQLDeployScripts\0003_WaitAWhile3.sql" />
+    <Content Include="Views\HealthCheck\Index3.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\_HealthCheckLayout3.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -562,6 +576,8 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Shared\_HealthCheckLayout.cshtml" />
     <Content Include="Views\HealthCheck\Index.cshtml" />
+    <Content Include="Views\HealthCheck\Index2.cshtml" />
+    <Content Include="Views\Shared\_HealthCheckLayout2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -585,7 +601,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51691</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50872/</IISUrl>
+          <IISUrl>http://localhost:50872/Test</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

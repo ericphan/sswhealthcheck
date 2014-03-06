@@ -21,7 +21,19 @@ namespace SSW.HealthCheck.Mvc5.Examples.Controllers
         public ActionResult Index()
         {
             var tests = HealthCheckService.Default.GetAll();
-            return View(tests.OrderBy(x => x.Name));
+            return View(tests);
+        }
+
+        public ActionResult Index2()
+        {
+            var tests = HealthCheckService.Default.GetAll();
+            return View(tests);
+        }
+
+        public ActionResult Index3()
+        {
+            var tests = HealthCheckService.Default.GetAll();
+            return View(tests);
         }
 
         public ActionResult Check(string key)

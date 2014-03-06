@@ -18,7 +18,7 @@
     </script>
 }
 
-<div id="ng-app" data-ng-app="ssw.healthcheck">
+<div id="ng-app" data-root-path="@Url.Content("~/")" data-ng-app="ssw.healthcheck">
     <h1>Health Check</h1>
     <div ng-controller="HealthCheck as controller" class="btn-block button-all">
         <button class="btn btn-sm" ng-click="controller.CheckAll()">Check All</button>

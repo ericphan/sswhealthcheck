@@ -16,25 +16,27 @@ namespace SSW.HealthCheck.Infrastructure.Tests
         /// <param name="description">The description.</param>
         /// <param name="isDefault">The is default.</param>
         /// <param name="testMethod">The test method.</param>
-        public GenericTest(string name, string description, bool isDefault, Action<ITestContext> testMethod)
+        /// <param name="order">The order in which test will appear in the list of tests.</param>
+        public GenericTest(string name, string description, bool isDefault, Action<ITestContext> testMethod, int order)
         {
             this.Name = name;
             this.Description = description;
             this.IsDefault = isDefault;
             this.Method = testMethod;
+            this.Order = order;
         }
 
         /// <summary>
         /// Gets the name for the test.
         /// </summary>
         /// <value></value>
-        public string Name { get;private set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Gets the description for test.
         /// </summary>
         /// <value></value>
-        public string Description { get;private set; }
+        public string Description { get; private set; }
 
         /// <summary>
         /// Gets the widget actions.
@@ -49,10 +51,16 @@ namespace SSW.HealthCheck.Infrastructure.Tests
         }
 
         /// <summary>
+        /// Gets or sets the order in which test appears.
+        /// </summary>
+        /// <value>The order.</value>
+        public int Order { get; set; }
+
+        /// <summary>
         /// Gets a value that indicate if the test is to run by default.
         /// </summary>
         /// <value></value>
-        public bool IsDefault { get;private set; }
+        public bool IsDefault { get; private set; }
 
         /// <summary>
         /// Gets or sets the method.
@@ -66,7 +74,7 @@ namespace SSW.HealthCheck.Infrastructure.Tests
         /// <param name="context"></param>
         public void Test(ITestContext context)
         {
-            Method(context);
+            this.Method(context);
         }
     }
 }

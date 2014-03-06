@@ -21,7 +21,7 @@ namespace $rootnamespace$.Controllers
         public ActionResult Index()
         {
             var tests = HealthCheckService.Default.GetAll();
-            return View(tests.OrderBy(x => x.Name));
+            return View(tests);
         }
 
         public ActionResult Check(string key)

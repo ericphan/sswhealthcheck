@@ -20,14 +20,18 @@
 
         private readonly bool isDefault = false;
 
+        private int order;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SQLDeployTest" /> class.
         /// </summary>
         /// <param name="settings">The settings.</param>
+        /// <param name="order">The order in which test will appear in the list of tests.</param>
         /// <param name="security">The security.</param>
-        public SQLDeployTest(SqlDeploySettings settings, SqlDeploySecurity security = null)
+        public SQLDeployTest(SqlDeploySettings settings, int order = 0, SqlDeploySecurity security = null)
         {
             this.sqlDeploy = new SqlDeployDbHelper(settings, security);
+            this.Order = order;
         }
 
         /// <summary>
@@ -35,11 +39,13 @@
         /// </summary>
         /// <param name="isDefault">The is default.</param>
         /// <param name="settings">The settings.</param>
+        /// <param name="order">The order in which test will appear in the list of tests.</param>
         /// <param name="security">The security.</param>
-        public SQLDeployTest(bool isDefault, SqlDeploySettings settings, SqlDeploySecurity security = null)
+        public SQLDeployTest(bool isDefault, SqlDeploySettings settings, int order = 0, SqlDeploySecurity security = null)
         {
             this.sqlDeploy = new SqlDeployDbHelper(settings, security);
             this.isDefault = isDefault;
+            this.Order = order;
         }
 
         /// <summary>
@@ -48,12 +54,14 @@
         /// <param name="isDefault">The is default.</param>
         /// <param name="name">The test title.</param>
         /// <param name="settings">The settings.</param>
+        /// <param name="order">The order in which test will appear in the list of tests.</param>
         /// <param name="security">The security.</param>
-        public SQLDeployTest(bool isDefault, string name, SqlDeploySettings settings, SqlDeploySecurity security = null)
+        public SQLDeployTest(bool isDefault, string name, SqlDeploySettings settings, int order = 0, SqlDeploySecurity security = null)
         {
             this.sqlDeploy = new SqlDeployDbHelper(settings, security);
             this.isDefault = isDefault;
             this.name = name;
+            this.Order = order;
         }
 
         /// <summary>
@@ -63,13 +71,15 @@
         /// <param name="name">The test title.</param>
         /// <param name="description">The test description.</param>
         /// <param name="settings">The settings.</param>
+        /// <param name="order">The order in which test will appear in the list of tests.</param>
         /// <param name="security">The security.</param>
-        public SQLDeployTest(bool isDefault, string name, string description, SqlDeploySettings settings, SqlDeploySecurity security = null)
+        public SQLDeployTest(bool isDefault, string name, string description, SqlDeploySettings settings, int order = 0, SqlDeploySecurity security = null)
         {
             this.sqlDeploy = new SqlDeployDbHelper(settings, security);
             this.isDefault = isDefault;
             this.name = name;
             this.description = description;
+            this.Order = order;
         }
 
         /// <summary>
@@ -81,6 +91,23 @@
             get
             {
                 return this.name;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the order in which test appears.
+        /// </summary>
+        /// <value>The order.</value>
+        public int Order
+        {
+            get
+            {
+                return this.order;
+            }
+
+            set
+            {
+                this.order = value;
             }
         }
 

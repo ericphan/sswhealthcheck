@@ -23,8 +23,9 @@ namespace $rootnamespace$.App_Start
         }
         public static void RegisterTests(HealthCheckService svc)
         {
-            svc.Add(new NotDebugTest());
-            svc.Add(new DbConnectionTest());
+            svc.Add(new NotDebugTest(1));
+            svc.Add(new DbConnectionTest(2));
+			svc.Add(new SmtpTest(3));
             svc.Setup<Hubs.HealthCheckHub>();
         }
     }

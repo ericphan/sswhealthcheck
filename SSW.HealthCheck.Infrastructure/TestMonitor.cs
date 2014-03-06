@@ -25,6 +25,11 @@
             get { return this.test.Description; }
         }
 
+        public int Order
+        {
+            get { return this.test.Order; }
+        }
+
         public bool IsDefault { get { return this.test.IsDefault; } }
         public bool IsRunning
         {

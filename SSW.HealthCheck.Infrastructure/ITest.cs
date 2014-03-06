@@ -25,5 +25,11 @@
         /// </summary>
         /// <param name="context">The context.</param>
         void Test(ITestContext context);
+
+        /// <summary>
+        /// Gets or sets the order in which test appears.
+        /// </summary>
+        /// <value>The order.</value>
+        int Order { get; set; }
     }
 }
