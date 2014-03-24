@@ -153,18 +153,14 @@
         /// <param name="ctx">Test context</param>
         public void Test(ITestContext ctx)
         {
-            var config = WebConfigurationManager.OpenWebConfiguration("~/");
-            var settings = config.ConnectionStrings.ConnectionStrings.OfType<ConnectionStringSettings>()
-                .Where(x =>
-                    (this.Exclude == null || this.Exclude.Length == 0 || !this.Exclude.Contains(x.Name)) &&
-                    (this.Include == null || this.Include.Length == 0 || this.Include.Contains(x.Name))).ToList();
+            var settings = ConfigurationManager.ConnectionStrings.OfType<ConnectionStringSettings>().ToList();
 
             var failedSettings = new System.Collections.Concurrent.ConcurrentBag<ConnectionStringSettings>();
             var settingsCount = settings.Count();
             var processedCount = 0;
             ctx.UpdateProgress(0, processedCount, settingsCount);
             Parallel.ForEach(
-                settings,
+                settings.ToList(),
                 setting =>
                 {
                     try
