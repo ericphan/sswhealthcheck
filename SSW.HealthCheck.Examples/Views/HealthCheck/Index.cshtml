@@ -28,12 +28,12 @@
     <div ng-controller="HealthCheck as controller" class="ng-cloak">
         <div>
             <div id="accordion" class="panel-group" ng-repeat="model in tests">
-                <div class="panel panel-default" ng-class="{'panel-default': (model.Result != null && model.Result.Success == true), 'panel-danger': (model.Result != null && model.Result.Success == false) }">
+                <div class="panel panel-default" ng-class="{'panel-passed': (model.Result != null && model.Result.Success == true), 'panel-failed': (model.Result != null && model.Result.Success == false) }">
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <a data-toggle="collapse" data-target="#panel{{$index}}" class="collapsed">
                                 {{sev}}
-                                <span class="glyphicon" ng-class="{'glyphicon-question-sign info-text': model.Result == null, 'glyphicon-ok-sign pass-text': model.Result.Success == true, 'glyphicon-exclamation-sign': (model.Result.Success == false) }"></span>
+                                <span class="glyphicon" ng-class="{'glyphicon-question-sign info-text': model.Result == null, 'glyphicon-ok-sign pass-text': model.Result.Success == true, 'glyphicon-exclamation-sign fail-text': (model.Result.Success == false) }"></span>
                                 {{model.Name}}
                             </a>
                         </h3>

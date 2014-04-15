@@ -81,6 +81,14 @@ input[type="checkbox"].input-validation-error {
      cursor: pointer;
 }
 
+.panel-passed {
+    border-top: 3px solid #3c763d !important;
+}
+
+.panel-failed {
+    border-top: 3px solid #a94442 !important;
+}
+
 .panel-heading a {
     display: block;
     width: 100%;
