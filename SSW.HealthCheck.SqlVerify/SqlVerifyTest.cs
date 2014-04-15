@@ -103,6 +103,24 @@
         }
 
         /// <summary>
+        /// Gets or sets the test category. Used for grouping of tests
+        /// </summary>
+        /// <value>The test category.</value>
+        public TestCategory TestCategory { get; set; }
+
+        /// <summary>
+        /// Gets a value indicating whether test belongs to a category.
+        /// </summary>
+        /// <value></value>
+        public bool HasCategory
+        {
+            get
+            {
+                return this.TestCategory != null;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the order in which test appears.
         /// </summary>
         /// <value>The order.</value>

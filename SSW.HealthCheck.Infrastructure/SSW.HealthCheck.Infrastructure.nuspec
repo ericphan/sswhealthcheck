@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+	<metadata>
+		<id>SSW.HealthCheck.Core</id>
+		<version>$version$</version>
+		<title>SSW.HealthCheck.Core</title>
+		<authors>Igor Goldobin</authors>
+		<owners>Igor Goldobin</owners>
+		<projectUrl>https://www.sswhealthcheck.com</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>SSW Health Check provides a framework to write asynchronous tests to verify the state of a MVC website.</description>
+		<copyright />
+		<language>en-AU</language>
+		<tags>MVC</tags>
+	</metadata>
+</package>

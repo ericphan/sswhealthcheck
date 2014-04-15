@@ -15,11 +15,12 @@
     <script type="text/javascript">
         var t = [@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))];
         var hcheck = angular.module('ssw.healthcheck').value('tests', t[0]);
+        var url = "@Url.Content("~/")";
     </script>
 }
 
-<div id="ng-app" data-ng-app="ssw.healthcheck">
-    <h1>Health Check</h1>
+<div id="ng-app" data-root-path="@Url.Content("~/")" data-ng-app="ssw.healthcheck">
+    <h1>HealthCheck</h1>
     <div ng-controller="HealthCheck as controller" class="btn-block button-all">
         <button class="btn btn-sm" ng-click="controller.CheckAll()">Check All</button>
     </div>

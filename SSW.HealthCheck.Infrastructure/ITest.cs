@@ -31,5 +31,16 @@
         /// </summary>
         /// <value>The order.</value>
         int Order { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test category. Used for grouping of tests
+        /// </summary>
+        /// <value>The test category.</value>
+        TestCategory TestCategory { get; set; }
+
+        /// <summary>
+        /// Gets a value indicating whether test belongs to a category.
+        /// </summary>
+        bool HasCategory { get; }
     }
 }

@@ -1,10 +1,14 @@
 ﻿namespace SSW.HealthCheck.Infrastructure
 {
+    using System.Web;
+
     public interface ITestContext
     {
         void UpdateProgress(int min, int val, int max);
 
         void WriteLine(string message, EventType type);
+
+        HttpContext HttpContext { get; set; }
     }
 
     public static class ITestContextExtensions

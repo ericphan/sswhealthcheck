@@ -17,6 +17,7 @@
 			<dependency id="angularjs" version="1.2.2" />
 			<dependency id="bootstrap" version="3.0.0" />
 			<dependency id="Microsoft.AspNet.SignalR" version="[1.2.1]" />
+			<dependency id="SSW.HealthCheck.Core" version="1.0.15" />
 		</dependencies>
 	</metadata>
 	<files>
@@ -24,6 +25,5 @@
 		<file src="Content\healthcheck\fonts\glyphicons-halflings-regular.eot" target="content\Content\healthcheck\fonts\" />
 		<file src="Content\healthcheck\fonts\glyphicons-halflings-regular.ttf" target="content\Content\healthcheck\fonts\" />
 		<file src="Content\healthcheck\fonts\glyphicons-halflings-regular.woff" target="content\Content\healthcheck\fonts\" />
-		<file src="$OutputPath$SSW.HealthCheck.Infrastructure.dll" target="lib\net45" />
 	</files>
 </package>

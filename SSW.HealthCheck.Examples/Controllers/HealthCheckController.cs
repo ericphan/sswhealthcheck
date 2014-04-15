@@ -20,24 +20,22 @@ namespace SSW.HealthCheck.Mvc5.Examples.Controllers
 
         public ActionResult Index()
         {
-            var tests = HealthCheckService.Default.GetAll();
-            return View(tests);
-        }
+            if (this.HttpContext != null)
+            {
+                HealthCheckService.Default.HttpContext = this.HttpContext.ApplicationInstance.Context;
+            }
 
-        public ActionResult Index2()
-        {
-            var tests = HealthCheckService.Default.GetAll();
-            return View(tests);
-        }
-
-        public ActionResult Index3()
-        {
             var tests = HealthCheckService.Default.GetAll();
             return View(tests);
         }
 
         public ActionResult Check(string key)
         {
+            if (this.HttpContext != null)
+            {
+                HealthCheckService.Default.HttpContext = this.HttpContext.ApplicationInstance.Context;
+            }
+
             var m = HealthCheckService.Default.GetByKey(key);
             m.Run();
             var json = JsonConvert.SerializeObject(m, settings);

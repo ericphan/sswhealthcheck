@@ -23,7 +23,7 @@ namespace SSW.HealthCheck.Mvc5.Examples.App_Start
         }
         public static void RegisterTests(HealthCheckService svc)
         {
-            svc.Add(new NotDebugTest(4));
+            svc.Add(new NotDebugTest(1));
             svc.Add(new DbConnectionTest(2));
 			svc.Add(new SmtpTest(3));
             svc.Setup<Hubs.HealthCheckHub>();

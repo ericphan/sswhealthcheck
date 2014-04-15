@@ -11,5 +11,10 @@
         /// Gets or sets a message that describe the result of the test.
         /// </summary>
         public string Message { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test running time.
+        /// </summary>
+        public long RunningTime { get; set; }
     }
 }

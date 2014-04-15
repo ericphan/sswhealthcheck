@@ -3,15 +3,23 @@
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Diagnostics;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Web;
+
+    using Newtonsoft.Json;
 
     public class TestMonitor : ITestContext
     {
         private CancellationToken cancelToken = new CancellationToken();
         private ITest test;
         private Task<TestResult> task;
+
+        [JsonIgnore]
+        public HttpContext HttpContext { get; set; }
 
         public string Key { get; private set; }
 
@@ -102,9 +110,15 @@
 
         public TestResult Run()
         {
-            var t = RunAsync();
+            var watch = Stopwatch.StartNew();
+            var t = this.RunAsync();
             t.Wait();
-            return t.Result;
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            var result = t.Result;
+            result.RunningTime = elapsedMs;
+
+            return result;
         }
 
         public Task<TestResult> RunAsync()

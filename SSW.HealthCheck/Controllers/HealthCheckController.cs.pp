@@ -20,12 +20,22 @@ namespace $rootnamespace$.Controllers
 
         public ActionResult Index()
         {
+            if (this.HttpContext != null)
+            {
+                HealthCheckService.Default.HttpContext = this.HttpContext.ApplicationInstance.Context;
+            }
+
             var tests = HealthCheckService.Default.GetAll();
             return View(tests);
         }
 
         public ActionResult Check(string key)
         {
+            if (this.HttpContext != null)
+            {
+                HealthCheckService.Default.HttpContext = this.HttpContext.ApplicationInstance.Context;
+            }
+
             var m = HealthCheckService.Default.GetByKey(key);
             m.Run();
             var json = JsonConvert.SerializeObject(m, settings);

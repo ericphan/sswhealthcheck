@@ -69,11 +69,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SSW.SQLDeploy.Core.1.0.1.0\lib\net45\SSW.Data.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="SSW.HealthCheck.Infrastructure">
-      <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.12.0\lib\net45\SSW.HealthCheck.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="SSW.HealthCheck.Mvc5">
-      <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.12.0\lib\net45\SSW.HealthCheck.Mvc5.dll</HintPath>
+    <Reference Include="SSW.HealthCheck.Mvc5, Version=1.0.14.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.14.1\lib\net45\SSW.HealthCheck.Mvc5.dll</HintPath>
     </Reference>
     <Reference Include="SSW.SQLDeploy.Core, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -85,6 +83,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -94,6 +96,14 @@
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.1\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -196,13 +206,16 @@
     <Compile Include="App_Start\HealthCheckConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HealthCheckController.cs" />
+    <Compile Include="Controllers\HealthCheckTestsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\HealthCheckHub.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -265,15 +278,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="App_Data\SqlDeploy.config" />
-    <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\healthcheck-dark\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\healthcheck-dark\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\healthcheck-dark\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\healthcheck-blue\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\healthcheck-blue\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\healthcheck-blue\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\healthcheck\angular.min.js" />
     <Content Include="Scripts\healthcheck\bootstrap.min.js" />
@@ -574,14 +587,20 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\Shared\_HealthCheckLayout.cshtml" />
     <Content Include="Views\HealthCheck\Index.cshtml" />
     <Content Include="Views\HealthCheck\Index2.cshtml" />
     <Content Include="Views\Shared\_HealthCheckLayout2.cshtml" />
+    <Content Include="Views\Shared\_HealthCheckLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SSW.HealthCheck.Infrastructure\SSW.HealthCheck.Infrastructure.csproj">
+      <Project>{263834f9-36f6-4b31-a775-4745b13d602c}</Project>
+      <Name>SSW.HealthCheck.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

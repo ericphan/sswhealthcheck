@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace SSW.HealthCheck.Infrastructure
 {
     using System.Linq;
+    using System.Web;
 
     public class HealthCheckService
     {
@@ -17,6 +18,31 @@ namespace SSW.HealthCheck.Infrastructure
         public event EventHandler TestCompleted;
         public event EventHandler<TestEvent> TestEventReceived;
         public event EventHandler<TestProgress> TestProgressChanged;
+
+        private HttpContext httpContext = null;
+
+        public HttpContext HttpContext
+        {
+            get
+            {
+                return httpContext;
+            }
+
+            set
+            {
+                foreach (var monitor in this.monitors)
+                {
+                    this.monitors[monitor.Key].HttpContext = value;
+                }
+
+                this.httpContext = value;
+            }
+        }
+
+        public HealthCheckService()
+        {
+            
+        }
 
         protected void OnTestStarted(object sender, EventArgs e)
         {
@@ -62,7 +88,7 @@ namespace SSW.HealthCheck.Infrastructure
             }
             var monitor = monitors.GetOrAdd(key, (k) =>
             {
-                var m = new TestMonitor(this, k, test);
+                var m = new TestMonitor(this, k, test) { HttpContext = this.HttpContext };
                 m.Started += OnTestStarted;
                 m.Completed += OnTestCompleted;
                 m.EventReceived += OnTestEventReceived;
@@ -75,7 +101,7 @@ namespace SSW.HealthCheck.Infrastructure
         public bool OrderByName { get; set; }
 
         public IEnumerable<TestMonitor> GetAll()
-        {
+        {   
             return this.monitors.Values.OrderBy(t => t.Order).ThenBy(t => t.Name);
         }
 

@@ -133,6 +133,24 @@ namespace SSW.HealthCheck.Infrastructure.Tests
         }
 
         /// <summary>
+        /// Gets or sets the test category. Used for grouping of tests
+        /// </summary>
+        /// <value>The test category.</value>
+        public TestCategory TestCategory { get; set; }
+
+        /// <summary>
+        /// Gets a value indicating whether test belongs to a category.
+        /// </summary>
+        /// <value></value>
+        public bool HasCategory
+        {
+            get
+            {
+                return this.TestCategory != null;
+            }
+        }
+
+        /// <summary>
         /// Run the health check.
         /// </summary>
         /// <param name="context">Test context</param>
