@@ -19,16 +19,13 @@ namespace SSW.HealthCheck.MVC4.Examples.Controllers
 
         public ActionResult Index()
         {
-            var tests = HealthCheckService.Default.GetAll();
-            var tasks = tests.Where(x => x.IsDefault).Select(x => x.RunAsync()).ToArray();
-            Task.WaitAll(tasks);
-
-            var failed = tests.Any(t => t.Result != null && !t.Result.Success);
-            if (failed)
+            if (this.HttpContext != null)
             {
-                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                HealthCheckService.Default.HttpContext = this.HttpContext.ApplicationInstance.Context;
             }
-            return View(tests.OrderBy(x => x.Name));
+
+            var tests = HealthCheckService.Default.GetAll();
+            return View(tests);
         }
 
         public ActionResult Check(string key)

@@ -66,6 +66,7 @@
     <Compile Include="TestCategory.cs" />
     <Compile Include="TestContext.cs" />
     <Compile Include="TestEvent.cs" />
+    <Compile Include="TestGroup.cs" />
     <Compile Include="TestMonitor.cs" />
     <Compile Include="TestProgress.cs" />
     <Compile Include="TestResult.cs" />

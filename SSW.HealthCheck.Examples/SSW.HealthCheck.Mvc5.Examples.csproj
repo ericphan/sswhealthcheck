@@ -234,6 +234,8 @@
     <Content Include="Content\healthcheck-dark\bootstrap.min.css" />
     <Content Include="Content\healthcheck-dark\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\healthcheck-dark\healthcheck.css" />
+    <Content Include="Content\healthcheck\loader16.gif" />
+    <Content Include="Content\healthcheck\loader.gif" />
     <Content Include="Content\healthcheck\angular-csp.css" />
     <Content Include="Content\healthcheck\bootstrap-theme.min.css" />
     <Content Include="Content\healthcheck\bootstrap.min.css" />

@@ -28,6 +28,16 @@
             get { return this.test.Name; }
         }
 
+        public string UId
+        {
+            get { return this.Key.Replace(".", "-"); }
+        }
+
+        public TestCategory TestCategory
+        {
+            get { return this.test.TestCategory; }
+        }
+
         public string Description
         {
             get { return this.test.Description; }
@@ -90,6 +100,12 @@
             {
                 test.Test(this);
                 r.Message = string.Empty;
+                r.Success = true;
+            }
+            catch (PassedWithWarningException ex)
+            {
+                r.Message = ex.Message;
+                r.ShowWarning = true;
                 r.Success = true;
             }
             catch (Exception ex)

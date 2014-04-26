@@ -45,8 +45,15 @@ module ssw {
 
                 // convert tests into mapping
                 var testsByKey = {};
-                for (var k in $scope.tests) {
-                    var t = tests[k];
+                var allTests = [];
+                for (var i = 0; i < $scope.tests.length; i++) {
+                    for (var j = 0; j < $scope.tests[i].TestMonitors.length; j++) {
+                        allTests.push($scope.tests[i].TestMonitors[j]);
+                    }
+                }
+
+                for (var k in allTests) {
+                    var t = allTests[k];
                     testsByKey[t.Key] = t;
                 }
 
@@ -62,14 +69,14 @@ module ssw {
                         });
                 };
                 this.CheckAll = () => {
-                    for (var k in $scope.tests) {
-                        var test = $scope.tests[k];
+                    for (var k in allTests) {
+                        var test = allTests[k];
                         this.Check(test);
                     }
                 };
                 this.CheckAllDefault = () => {
-                    for (var k in $scope.tests) {
-                        var test = $scope.tests[k];
+                    for (var k in allTests) {
+                        var test = allTests[k];
                         if (!test.IsRunning && test.IsDefault) {
                             this.Check(test);
                         }
@@ -127,6 +134,11 @@ module ssw {
     }
 
     var hcheck = angular.module('ssw.healthcheck', <string[]>[]);
+    hcheck.filter('toTrusted', function ($sce) {
+        return function (val) {
+            return $sce.trustAsHtml(val);
+        };
+    });
     hcheck.value('tests', <string[]>[]);
     hcheck.controller('HealthCheck', ['$scope', '$http', 'tests', ssw.healthcheck.HealthCheckController]);
 }

@@ -25,8 +25,19 @@ namespace $rootnamespace$.Controllers
                 HealthCheckService.Default.HttpContext = this.HttpContext.ApplicationInstance.Context;
             }
 
-            var tests = HealthCheckService.Default.GetAll();
-            return View(tests);
+            var tests = HealthCheckService
+                            .Default
+                            .GetAll()
+                            .GroupBy(t => new { Name = t.TestCategory == null ? "Default tests" : t.TestCategory.Name, Order = t.TestCategory == null ? 0 : t.TestCategory.Order })
+                            .OrderBy(g => g.Key.Order)
+                            .ThenBy(g => g.Key.Name)
+                            .Select(g => new TestGroup
+                                            {
+                                                Name = g.Key.Name,
+                                                TestMonitors = g.OrderBy(i => i.Order).ThenBy(i => i.Key)
+                                            });
+                            
+            return this.View(tests);
         }
 
         public ActionResult Check(string key)

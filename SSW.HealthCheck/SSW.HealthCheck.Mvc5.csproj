@@ -100,6 +100,7 @@
     <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\healthcheck\healthcheck.css" />
     <Compile Include="HealthCheckHubNotifier.cs" />
+    <Content Include="Content\healthcheck\loader16.gif" />
     <Content Include="Controllers\HealthCheckController.cs.pp" />
     <Content Include="Hubs\HealthCheckHub.cs.pp" />
     <Compile Include="Properties\AssemblyInfo.cs" />

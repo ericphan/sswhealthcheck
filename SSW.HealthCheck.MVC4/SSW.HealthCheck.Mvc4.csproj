@@ -106,6 +106,7 @@
     <Content Include="Content\healthcheck\bootstrap.min.css" />
     <Content Include="Content\healthcheck\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\healthcheck\healthcheck.css" />
+    <Content Include="Content\healthcheck\loader16.gif" />
     <Content Include="Controllers\HealthCheckController.cs.pp" />
     <Content Include="Hubs\HealthCheckHub.cs.pp" />
     <None Include="Content\healthcheck\fonts\glyphicons-halflings-regular.eot" />

@@ -73,6 +73,10 @@ input[type="checkbox"].input-validation-error {
     color: #3c763d;
 }
 
+.pass-warning-text {
+    color: #ffd800;
+}
+
 .info-text {
     color: #31708f;
 }
@@ -103,7 +107,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .panel-passed {
-    border-top: 3px solid #3c763d !important;
+    /*border-top: 3px solid #3c763d !important;*/
 }
 
 .panel-failed {
@@ -122,4 +126,10 @@ input[type="checkbox"].input-validation-error {
 
 .panel {
     margin-bottom: 10px !important;
+}
+
+.running-icon {
+    width: 16px;
+    height: 16px;
+    background-image: url('loader16.gif')
 }

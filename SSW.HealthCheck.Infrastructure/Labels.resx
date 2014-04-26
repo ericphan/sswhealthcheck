@@ -117,34 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-	<data name="SmtpTestDescription" xml:space="preserve">
+  <data name="SmtpTestDescription" xml:space="preserve">
     <value>Check the configured SMTP connectivity</value>
   </data>
-	<data name="SmtpTestTitle" xml:space="preserve">
+  <data name="SmtpTestTitle" xml:space="preserve">
     <value>SMTP Check</value>
   </data>
-	<data name="SmtpTestFailure" xml:space="preserve">
+  <data name="SmtpTestFailure" xml:space="preserve">
     <value>Smtp Test Failed</value>
   </data>
-	<data name="SmtpTestException" xml:space="preserve">
+  <data name="SmtpTestException" xml:space="preserve">
     <value>Exception testing Smtp connection: {0}</value>
   </data>
-	<data name="CouldNotReadSmtpSettings" xml:space="preserve">
+  <data name="CouldNotReadSmtpSettings" xml:space="preserve">
     <value>The system.net/mailSettings configuration section group could not be read.</value>
   </data>
-	<data name="DbTestTitle" xml:space="preserve">
+  <data name="DbTestTitle" xml:space="preserve">
     <value>Database Tests</value>
   </data>
-	<data name="DbTestDescription" xml:space="preserve">
+  <data name="DbTestDescription" xml:space="preserve">
     <value>Check that web application have connection to all the databases.</value>
   </data>
-	<data name="ConnectionSuccessful" xml:space="preserve">
+  <data name="ConnectionSuccessful" xml:space="preserve">
     <value>{0} connected successfully.</value>
   </data>
-	<data name="DebugModeTestTitle" xml:space="preserve">
-    <value>Debug Mode should be Off</value>
+  <data name="DebugModeTestTitle" xml:space="preserve">
+    <value>Debug Mode should be &lt;b&gt;Off&lt;/b&gt;</value>
   </data>
-	<data name="DebugModeTestDescription" xml:space="preserve">
+  <data name="DebugModeTestDescription" xml:space="preserve">
     <value>Verify that debug mode is off on production.</value>
   </data>
 </root>

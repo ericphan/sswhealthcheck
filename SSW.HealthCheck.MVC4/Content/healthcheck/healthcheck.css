@@ -73,20 +73,16 @@ input[type="checkbox"].input-validation-error {
     color: #3c763d;
 }
 
+.pass-warning-text {
+    color: #ffd800;
+}
+
 .info-text {
     color: #31708f;
 }
 
 .panel-title:hover {
      cursor: pointer;
-}
-
-.panel-passed {
-    border-top: 3px solid #3c763d !important;
-}
-
-.panel-failed {
-    border-top: 3px solid #a94442 !important;
 }
 
 .panel-heading a {
@@ -110,6 +106,14 @@ input[type="checkbox"].input-validation-error {
     content: "\e080";
 }
 
+.panel-passed {
+    /*border-top: 3px solid #3c763d !important;*/
+}
+
+.panel-failed {
+    border-top: 3px solid #a94442 !important;
+}
+
 .button-all {
     padding-bottom: 5px;
     width: 100%;
@@ -122,4 +126,10 @@ input[type="checkbox"].input-validation-error {
 
 .panel {
     margin-bottom: 10px !important;
+}
+
+.running-icon {
+    width: 16px;
+    height: 16px;
+    background-image: url('loader16.gif')
 }

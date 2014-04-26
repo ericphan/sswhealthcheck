@@ -6,10 +6,21 @@ var ssw;
                 var _this = this;
                 $scope.tests = tests;
 
+                //$scope.to_trusted = function (html_code) {
+                //    return $sce.trustAsHtml(html_code);
+                //}
+
                 // convert tests into mapping
                 var testsByKey = {};
-                for (var k in $scope.tests) {
-                    var t = tests[k];
+                var allTests = [];
+                for (var i = 0; i < $scope.tests.length; i++) {
+                    for (var j = 0; j < $scope.tests[i].TestMonitors.length; j++) {
+                        allTests.push($scope.tests[i].TestMonitors[j]);
+                    }
+                }
+
+                for (var k in allTests) {
+                    var t = allTests[k];
                     testsByKey[t.Key] = t;
                 }
 
@@ -23,14 +34,14 @@ var ssw;
                     });
                 };
                 this.CheckAll = function () {
-                    for (var k in $scope.tests) {
-                        var test = $scope.tests[k];
+                    for (var k in allTests) {
+                        var test = allTests[k];
                         _this.Check(test);
                     }
                 };
                 this.CheckAllDefault = function () {
-                    for (var k in $scope.tests) {
-                        var test = $scope.tests[k];
+                    for (var k in allTests) {
+                        var test = allTests[k];
                         if (!test.IsRunning && test.IsDefault) {
                             _this.Check(test);
                         }
@@ -91,6 +102,11 @@ var ssw;
     var healthcheck = ssw.healthcheck;
 
     var hcheck = angular.module('ssw.healthcheck', []);
+    hcheck.filter('toTrusted', function ($sce) {
+        return function (val) {
+            return $sce.trustAsHtml(val);
+        };
+    });
     hcheck.value('tests', []);
     hcheck.controller('HealthCheck', ['$scope', '$http', 'tests', ssw.healthcheck.HealthCheckController]);
 })(ssw || (ssw = {}));

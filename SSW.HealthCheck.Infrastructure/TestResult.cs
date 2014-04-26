@@ -16,5 +16,10 @@
         /// Gets or sets the test running time.
         /// </summary>
         public long RunningTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to show warning.
+        /// </summary>
+        public bool ShowWarning { get; set; }
     }
 }

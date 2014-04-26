@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using SSW.HealthCheck.Infrastructure;
 
-namespace SSW.HealthCheck.Mvc5.Examples.Controllers
+namespace $rootnamespace$.Controllers
 {
-	using SSW.HealthCheck.Infrastructure;
-
     public class HealthCheckController : Controller
     {
         private static readonly JsonSerializerSettings settings = new JsonSerializerSettings()
