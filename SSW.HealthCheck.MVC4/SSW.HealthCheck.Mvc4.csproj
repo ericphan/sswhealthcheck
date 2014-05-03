@@ -112,6 +112,7 @@
     <None Include="Content\healthcheck\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Content\healthcheck\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="Content\healthcheck\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Controllers\HealthCheckTestsController.cs.pp" />
     <None Include="packages.config" />
     <None Include="SSW.HealthCheck.Mvc4.nuspec">
       <SubType>Designer</SubType>

@@ -32,6 +32,7 @@ module ssw {
 
         export class HealthCheckController {
             $http: any;
+            UpdateStats: () => void;
             Check: (model: ITestMonitor) => void;
             CheckAll: () => void;
             CheckAllDefault: () => void;
@@ -58,10 +59,25 @@ module ssw {
                 }
 
                 this.$http = $http;
+                this.UpdateStats = () => {
+                    var $allTests = $(".panel");
+
+                    var all = $allTests.length;
+                    var passed = $allTests.find(".panel-title .pass-text").length;
+                    var warning = $allTests.find(".panel-title .pass-warning-text").length;
+                    var failed = $allTests.find(".panel-title .fail-text").length;
+
+                    $("#all-stat").text(all);
+                    $("#passed-stat").text(passed);
+                    $("#warning-stat").text(warning);
+                    $("#failed-stat").text(failed);
+                    $("#pending-stat").text((all - passed - warning - failed));
+                };
                 this.Check = (model: ITestMonitor) => {
+                    var that = this;
                     $http.get(($("#ng-app").data("root-path") || "/") + "HealthCheck/Check?Key=" + model.Key)
                         .success((data: any, status: any, headers: any, config: any) => {
-                            // model.Result = data;
+                            that.UpdateStats();
                             console.log(data);
                         })
                         .error((data: any, status: any, headers: any, config: any) => {

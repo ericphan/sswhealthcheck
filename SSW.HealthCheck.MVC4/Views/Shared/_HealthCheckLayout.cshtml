@@ -1,12 +1,13 @@
 ﻿@using System.Web.Mvc.Html
 @using SSW.HealthCheck.Mvc4
-<!DOCTYPE html>
+
 <html>
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSW HealthCheck</title>
-    
+
     <link type="text/css" href="@Url.Content("~/Content/healthcheck/healthcheck.css")" rel="stylesheet" />
     <link type="text/css" href="@Url.Content("~/Content/healthcheck/bootstrap.min.css")" rel="stylesheet" />
     <link type="text/css" href="@Url.Content("~/Content/healthcheck/angular-csp.css")" rel="stylesheet" />
@@ -23,8 +24,7 @@
                 @Html.ActionLink("SSW HealthCheck", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+                <ul class="nav navbar-nav"></ul>
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Powered by <a href="http://www.sswhealthcheck.com">SSW HealthCheck</a></p>
+            <p>&copy; @DateTime.Now.Year - <img style="vertical-align: middle;" src="http://tv.ssw.com/wp-content/themes/detube/images/SSW-logo.png"> Powered by <a href="http://www.sswhealthcheck.com">SSW HealthCheck</a></p>
         </footer>
     </div>
 
@@ -40,9 +40,10 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/healthcheck/modernizr-2.6.2.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/healthcheck/bootstrap.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/healthcheck/angular.min.js")"></script>
-    <script type="text/javascript" src="@Url.ContentWithWildcard("~/Scripts", @"jquery\.signalR-\d{1,3}\.\d{1,3}\.\d{1,3}\.js", "jquery.signalR-1.2.1.js")"></script>
+    <script type="text/javascript" src="@Url.ContentWithWildcard("~/Scripts", @"jquery\.signalR-\d{1,3}\.\d{1,3}\.\d{1,3}\.js", "jquery.signalR-2.0.2.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/SignalR/hubs")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/ssw.healthcheck.js")"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
+

@@ -12,11 +12,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.Mvc4", "SSW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.SqlVerify", "SSW.HealthCheck.SqlVerify\SSW.HealthCheck.SqlVerify.csproj", "{B6485C1F-67D5-4BE3-BEE0-36DE095A5FC4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Packages", "2. Packages", "{2D10F32E-2845-4CBB-AED9-2184FA249268}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Packages", "1. Packages", "{2D10F32E-2845-4CBB-AED9-2184FA249268}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Examples", "3. Examples", "{BD071D33-8F9A-42B9-910E-EDB2BB9D2487}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Core", "1. Core", "{E0B2B839-C54C-4CDA-A51A-E431E2F49C3D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Examples", "2. Examples", "{BD071D33-8F9A-42B9-910E-EDB2BB9D2487}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.Mvc4.Examples", "SSW.HealthCheck.MVC4.Examples\SSW.HealthCheck.Mvc4.Examples.csproj", "{BB1E681B-D725-48D1-B0FD-AADADD6A56EB}"
 EndProject
@@ -30,10 +28,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.SQLDeploy",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NugetPackages", "NugetPackages", "{CE95A76C-BC53-4558-8E1B-518E272E4054}"
 	ProjectSection(SolutionItems) = preProject
+		SSW.HealthCheck.Core.1.0.22.0.nupkg = SSW.HealthCheck.Core.1.0.22.0.nupkg
 		SSW.HealthCheck.Mvc4.1.0.0.0.nupkg = SSW.HealthCheck.Mvc4.1.0.0.0.nupkg
+		SSW.HealthCheck.Mvc4.1.0.22.0.nupkg = SSW.HealthCheck.Mvc4.1.0.22.0.nupkg
 		SSW.HealthCheck.Mvc4.1.0.5.0.nupkg = SSW.HealthCheck.Mvc4.1.0.5.0.nupkg
 		SSW.HealthCheck.Mvc4.1.0.6.0.nupkg = SSW.HealthCheck.Mvc4.1.0.6.0.nupkg
 		SSW.HealthCheck.Mvc4.1.0.8.0.nupkg = SSW.HealthCheck.Mvc4.1.0.8.0.nupkg
+		SSW.HealthCheck.Mvc5.1.0.22.0.nupkg = SSW.HealthCheck.Mvc5.1.0.22.0.nupkg
 		SSW.HealthCheck.Mvc5.1.0.4.0.nupkg = SSW.HealthCheck.Mvc5.1.0.4.0.nupkg
 		SSW.HealthCheck.Mvc5.1.0.5.0.nupkg = SSW.HealthCheck.Mvc5.1.0.5.0.nupkg
 		SSW.HealthCheck.Mvc5.1.0.6.0.nupkg = SSW.HealthCheck.Mvc5.1.0.6.0.nupkg
@@ -42,6 +43,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NugetPackages", "NugetPacka
 		SSW.HealthCheck.SQLDeploy.1.0.1.0.nupkg = SSW.HealthCheck.SQLDeploy.1.0.1.0.nupkg
 		SSW.HealthCheck.SqlVerify.1.1.0.0.nupkg = SSW.HealthCheck.SqlVerify.1.1.0.0.nupkg
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Solution Items", "0. Solution Items", "{EABB29A3-1C3E-45CF-B861-97223308AFBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSW.HealthCheck.Documentation", "SSW.HealthCheck.Documentation\SSW.HealthCheck.Documentation.csproj", "{4AB2C3CD-412E-46CA-94F9-A9649515C783}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +112,14 @@ Global
 		{49A47D42-A20F-4CFC-BE39-0E2960742131}.PreProd|Any CPU.Build.0 = Release|Any CPU
 		{49A47D42-A20F-4CFC-BE39-0E2960742131}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49A47D42-A20F-4CFC-BE39-0E2960742131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AB2C3CD-412E-46CA-94F9-A9649515C783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AB2C3CD-412E-46CA-94F9-A9649515C783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AB2C3CD-412E-46CA-94F9-A9649515C783}.DevTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AB2C3CD-412E-46CA-94F9-A9649515C783}.DevTest|Any CPU.Build.0 = Debug|Any CPU
+		{4AB2C3CD-412E-46CA-94F9-A9649515C783}.PreProd|Any CPU.ActiveCfg = Release|Any CPU
+		{4AB2C3CD-412E-46CA-94F9-A9649515C783}.PreProd|Any CPU.Build.0 = Release|Any CPU
+		{4AB2C3CD-412E-46CA-94F9-A9649515C783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AB2C3CD-412E-46CA-94F9-A9649515C783}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,10 +128,11 @@ Global
 		{B6485C1F-67D5-4BE3-BEE0-36DE095A5FC4} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
 		{BA77C192-83C3-479B-8FC2-7FCCADEDF158} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
 		{58615BD3-F745-4CD7-96E7-9914EFF0F313} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
+		{263834F9-36F6-4B31-A775-4745B13D602C} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
 		{49A47D42-A20F-4CFC-BE39-0E2960742131} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
 		{CE95A76C-BC53-4558-8E1B-518E272E4054} = {2D10F32E-2845-4CBB-AED9-2184FA249268}
 		{BB1E681B-D725-48D1-B0FD-AADADD6A56EB} = {BD071D33-8F9A-42B9-910E-EDB2BB9D2487}
 		{BA29B90E-E2F0-49A0-8D00-3E572905151D} = {BD071D33-8F9A-42B9-910E-EDB2BB9D2487}
-		{263834F9-36F6-4B31-A775-4745B13D602C} = {E0B2B839-C54C-4CDA-A51A-E431E2F49C3D}
+		{4AB2C3CD-412E-46CA-94F9-A9649515C783} = {EABB29A3-1C3E-45CF-B861-97223308AFBC}
 	EndGlobalSection
 EndGlobal

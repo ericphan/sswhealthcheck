@@ -17,7 +17,8 @@
 			<dependency id="angularjs" version="1.2.2" />
 			<dependency id="bootstrap" version="3.0.0" />
 			<dependency id="Microsoft.AspNet.SignalR" version="[1.2.1]" />
-			<dependency id="SSW.HealthCheck.Core" version="1.0.18" />
+			<dependency id="Microsoft.AspNet.WebApi" version="5.0.0" />
+			<dependency id="SSW.HealthCheck.Core" version="1.0.21" />
 		</dependencies>
 	</metadata>
 	<files>

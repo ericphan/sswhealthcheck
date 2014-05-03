@@ -22,7 +22,26 @@
 <div id="ng-app" data-root-path="@Url.Content("~/")" data-ng-app="ssw.healthcheck">
     <h1>SSW HealthCheck</h1>
     <div ng-controller="HealthCheck as controller" class="btn-block button-all">
-        <button class="btn" ng-click="controller.CheckAll()">Check All</button>
+        <span class="stats">
+            <span class="stat-node">
+                <span class="glyphicon glyphicon-ok-sign pass-text" class="stat-node-icon"></span>
+                <b>Passed:</b> <span id="passed-stat">0</span>
+            </span>
+            <span class="stat-node">
+                <span class="glyphicon glyphicon-ok-sign pass-warning-text" class="stat-node-icon"></span>
+                <b>Warning:</b>; <span id="warning-stat">0</span>
+            </span>
+            <span class="stat-node">
+                <span class="glyphicon glyphicon-exclamation-sign fail-text" class="stat-node-icon"></span>
+                <b>Failed:</b> <span id="failed-stat">0</span>
+            </span>
+            <span class="stat-node">
+                <span class="glyphicon glyphicon-info-sign info-text" class="stat-node-icon"></span>
+                <b>Pending:</b> <span id="pending-stat">0</span>
+            </span>
+            <span class="stat-node"><b>Total:</b> <span id="all-stat">0</span> </span>
+        </span>
+        <button class="btn btn-default" ng-click="controller.CheckAll()">Check All</button>
     </div>
 
     <div ng-controller="HealthCheck as controller" class="ng-cloak">
@@ -74,7 +93,7 @@
                                     </tbody>
                                 </table>
 
-                                <button class="btn" ng-click="controller.Check(test)">Check</button>
+                                <button class="btn btn-default" ng-click="controller.Check(test)">Check</button>
                             </div>
                         </div>
                     </div>

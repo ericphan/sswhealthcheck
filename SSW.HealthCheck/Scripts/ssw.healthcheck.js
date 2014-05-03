@@ -21,9 +21,24 @@ var ssw;
                 }
 
                 this.$http = $http;
+                this.UpdateStats = function () {
+                    var $allTests = $(".panel");
+
+                    var all = $allTests.length;
+                    var passed = $allTests.find(".panel-title .pass-text").length;
+                    var warning = $allTests.find(".panel-title .pass-warning-text").length;
+                    var failed = $allTests.find(".panel-title .fail-text").length;
+
+                    $("#all-stat").text(all);
+                    $("#passed-stat").text(passed);
+                    $("#warning-stat").text(warning);
+                    $("#failed-stat").text(failed);
+                    $("#pending-stat").text((all - passed - warning - failed));
+                };
                 this.Check = function (model) {
+                    var that = _this;
                     $http.get(($("#ng-app").data("root-path") || "/") + "HealthCheck/Check?Key=" + model.Key).success(function (data, status, headers, config) {
-                        // model.Result = data;
+                        that.UpdateStats();
                         console.log(data);
                     }).error(function (data, status, headers, config) {
                         console.log(data);

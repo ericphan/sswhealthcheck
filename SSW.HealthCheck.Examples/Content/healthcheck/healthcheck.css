@@ -133,3 +133,17 @@ input[type="checkbox"].input-validation-error {
     height: 16px;
     background-image: url('loader16.gif')
 }
+
+.stats {
+    margin-top: 20px; 
+    display: block; 
+    float: left;
+}
+
+.stat-node {
+    margin-right: 20px;
+}
+
+.stat-node-icon {
+    margin-right: 3px;
+}
