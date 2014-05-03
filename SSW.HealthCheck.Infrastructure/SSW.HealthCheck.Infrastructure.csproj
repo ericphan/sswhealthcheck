@@ -70,6 +70,7 @@
     <Compile Include="TestMonitor.cs" />
     <Compile Include="TestProgress.cs" />
     <Compile Include="TestResult.cs" />
+    <Compile Include="TestRunInstance.cs" />
     <Compile Include="Tests\SmtpTest.cs" />
     <Compile Include="Tests\DbConnectionTest.cs" />
     <Compile Include="Tests\GenericTest.cs" />

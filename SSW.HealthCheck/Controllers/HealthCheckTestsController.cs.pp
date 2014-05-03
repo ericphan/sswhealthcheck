@@ -27,10 +27,19 @@ namespace $rootnamespace$.Controllers
         /// </summary>
         /// <returns>Collection of all test results</returns>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        public IEnumerable<TestResult> Get()
+        public IEnumerable<TestRunInstance> Get()
         {
             var tests = HealthCheckService.Default.GetAll();
-            var results = tests.Select(test => test.Run()).ToList();
+            var results = tests.Select(test => 
+                new TestRunInstance
+                    {
+                        Result = test.Run(), 
+                        Key = test.Key,
+                        Name = test.Name,
+                        Description = test.Description,
+                        Order = test.Order,
+                        TestCategory = test.TestCategory
+                    }).ToList();
             return results;
         }
         
@@ -41,10 +50,18 @@ namespace $rootnamespace$.Controllers
         /// <param name="id">The test id.</param>
         /// <returns>Result of test run</returns>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        public TestResult Get(string id)
+        public TestRunInstance Get(string id)
         {
             var test = HealthCheckService.Default.GetByKey(id);
-            var result = test.Run();
+            var result = new TestRunInstance
+                    {
+                        Result = test.Run(), 
+                        Key = test.Key,
+                        Name = test.Name,
+                        Description = test.Description,
+                        Order = test.Order,
+                        TestCategory = test.TestCategory
+                    };
 
             return result;
         }
