@@ -12,5 +12,9 @@
 		<copyright />
 		<language>en-AU</language>
 		<tags>MVC</tags>
+
+		<dependencies>
+			<dependency id="EntityFramework" version="6.1.0" />
+		</dependencies>
 	</metadata>
 </package>

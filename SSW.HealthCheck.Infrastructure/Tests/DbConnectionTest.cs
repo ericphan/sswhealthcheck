@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Configuration;
     using System.Data.Common;
+    using System.Data.Entity.Core.EntityClient;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Configuration;
@@ -183,22 +184,42 @@
                 {
                     try
                     {
-                        var factory = DbProviderFactories.GetFactory(setting.ProviderName);
-                        var csBuilder = new DbConnectionStringBuilder();
-                        csBuilder.ConnectionString = setting.ConnectionString;
-                        csBuilder["Connection Timeout"] = 5;
 
-                        using (var cnn = factory.CreateConnection())
+                        var isEntityClient = setting.ProviderName == "System.Data.EntityClient";
+
+                        if (!isEntityClient)
                         {
-                            if (cnn == null)
+                            var factory = DbProviderFactories.GetFactory(setting.ProviderName);
+                            var csBuilder = new DbConnectionStringBuilder();
+                            csBuilder.ConnectionString = setting.ConnectionString;
+                            csBuilder["Connection Timeout"] = 5;
+                            var connectionString = csBuilder.ConnectionString;
+                            using (var cnn = factory.CreateConnection())
                             {
-                                ctx.WriteLine(EventType.Error, Errors.TestFailed, setting.Name, Errors.CannotCreateConnection);
-                                failedSettings.Add(setting);
+                                if (cnn == null)
+                                {
+                                    ctx.WriteLine(
+                                        EventType.Error,
+                                        Errors.TestFailed,
+                                        setting.Name,
+                                        Errors.CannotCreateConnection);
+                                    failedSettings.Add(setting);
+                                }
+                                else
+                                {
+                                    cnn.ConnectionString = connectionString;
+                                    cnn.Open();
+                                }
                             }
-                            else
+                        }
+                        else
+                        {
+                            var csBuilder = new EntityConnectionStringBuilder(setting.ConnectionString);
+                            csBuilder.Provider = "System.Data.SqlClient";
+                            csBuilder.ProviderConnectionString = csBuilder.ProviderConnectionString + ";Connection Timeout = 5";
+                            using (var entityConnection = new EntityConnection(csBuilder.ConnectionString))
                             {
-                                cnn.ConnectionString = csBuilder.ToString();
-                                cnn.Open();
+                                entityConnection.Open();
                             }
                         }
 
@@ -209,6 +230,7 @@
                         ctx.WriteLine(EventType.Error, Errors.TestFailed, setting.Name, ex.Message);
                         failedSettings.Add(setting);
                     }
+
                     processedCount++;
                     ctx.UpdateProgress(0, processedCount, settingsCount);
                 });

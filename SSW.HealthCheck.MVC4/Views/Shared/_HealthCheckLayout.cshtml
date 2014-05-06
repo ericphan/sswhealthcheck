@@ -13,17 +13,13 @@
     <link type="text/css" href="@Url.Content("~/Content/healthcheck/angular-csp.css")" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("SSW HealthCheck", "Index", "Home", null, new { @class = "navbar-brand" })
+                <img class="navbar-brand" src="@Url.Content("~/Content/healthcheck/healthCheck.png")" width="200">
             </div>
             <div class="navbar-collapse collapse">
+                @RenderSection("stats", required: false)
                 <ul class="nav navbar-nav"></ul>
             </div>
         </div>
@@ -32,7 +28,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - <img style="vertical-align: middle;" src="http://tv.ssw.com/wp-content/themes/detube/images/SSW-logo.png"> Powered by <a href="http://www.sswhealthcheck.com">SSW HealthCheck</a></p>
+            <p>&copy; @DateTime.Now.Year - <img style="vertical-align: middle; width: 50px" src="@Url.Content("~/Content/healthcheck/ssw.png")"> Powered by <a href="http://www.sswhealthcheck.com">SSW HealthCheck</a></p>
         </footer>
     </div>
 

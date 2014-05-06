@@ -14,9 +14,8 @@
 		<tags>MVC</tags>
 
 		<dependencies>
-			<dependency id="SSW.SqlVerify.Core" version="1.0.0" />
-			<dependency id="SSW.HealthCheck.Mvc5" version="1.0.12" />
-			<dependency id="Microsoft.AspNet.Mvc" version="5.0.0" />
+			<dependency id="SSW.SqlVerify.Core" version="1.1.0" />
+			<dependency id="SSW.HealthCheck.Core" version="1.0.22" />
 		</dependencies>
 	</metadata>
 </package>

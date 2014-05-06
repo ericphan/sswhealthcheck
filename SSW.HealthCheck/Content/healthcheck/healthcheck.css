@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 110px;
     padding-bottom: 20px;
 }
 
@@ -116,8 +116,6 @@ input[type="checkbox"].input-validation-error {
 
 .button-all {
     padding-bottom: 5px;
-    width: 100%;
-    overflow: hidden;
 }
 
 .button-all button {
@@ -135,9 +133,9 @@ input[type="checkbox"].input-validation-error {
 }
 
 .stats {
-    margin-top: 20px; 
+    margin-top: 60px; 
     display: block; 
-    float: left;
+    float: right;
 }
 
 .stat-node {

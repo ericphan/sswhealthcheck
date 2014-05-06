@@ -167,24 +167,61 @@
                     var csBuilder = new SqlConnectionStringBuilder(database.ConnectionString);
                     var dbName = csBuilder.InitialCatalog;
                     var upToDate = database.Status.IsUpToDate;
-                    var reconcileResult = this.sqlDeploy.ReconcileDatabase(database.DatabaseName);
-                    if (upToDate && reconcileResult.IsSuccessful)
+                    try
                     {
-                        context.WriteLine(EventType.Success, Titles.DbIsUpToDate, dbName);
-                    }
-                    else
-                    {
-                        if (!upToDate)
+                        var reconcileResult = this.sqlDeploy.ReconcileDatabase(database.DatabaseName);
+                        if (upToDate && reconcileResult.IsSuccessful)
                         {
-                            context.WriteLine(EventType.Error, Titles.DbCheckFailed, dbName, Titles.SchemaNotUpToDate);
-                            var result = new SqlDeployResult { IsSuccessful = false, DatabaseName = dbName, Exceptions = new List<Exception> { new Exception(Titles.SchemaNotUpToDate) } };
-                            failedChecks.Add(result);
+                            context.WriteLine(EventType.Success, Titles.DbIsUpToDate, dbName);
                         }
                         else
                         {
-                            context.WriteLine(EventType.Error, Titles.DbCheckFailed, dbName, Titles.SchemaChanged);
-                            failedChecks.Add(reconcileResult);
+                            if (!upToDate)
+                            {
+                                context.WriteLine(
+                                    EventType.Error,
+                                    Titles.DbCheckFailed,
+                                    dbName,
+                                    Titles.SchemaNotUpToDate);
+                                var result = new SqlDeployResult
+                                                 {
+                                                     IsSuccessful = false,
+                                                     DatabaseName = dbName,
+                                                     Exceptions =
+                                                         new List<Exception>
+                                                             {
+                                                                 new Exception(
+                                                                     Titles
+                                                                     .SchemaNotUpToDate)
+                                                             }
+                                                 };
+                                failedChecks.Add(result);
+                            }
+                            else
+                            {
+                                context.WriteLine(EventType.Error, Titles.DbCheckFailed, dbName, Titles.SchemaChanged);
+                                failedChecks.Add(reconcileResult);
+                            }
                         }
+                    }
+                    catch (SqlException ex)
+                    {
+                        context.WriteLine(
+                                    EventType.Error,
+                                    Titles.DbCheckFailed,
+                                    dbName,
+                                    ex.Message);
+                                var result = new SqlDeployResult
+                                                 {
+                                                     IsSuccessful = false,
+                                                     DatabaseName = dbName,
+                                                     Exceptions =
+                                                         new List<Exception>
+                                                             {
+                                                                 new Exception(ex.Message)
+                                                             }
+                                                 };
+                                failedChecks.Add(result);
                     }
 
                     processedCount++;

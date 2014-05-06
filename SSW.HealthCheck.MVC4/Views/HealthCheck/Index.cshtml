@@ -1,100 +1,121 @@
 ﻿@model IEnumerable<SSW.HealthCheck.Infrastructure.TestGroup>
-    @{
-        ViewBag.Title = "SSW HealthCheck";
-        Layout = "~/Views/Shared/_HealthCheckLayout.cshtml";
-    }
+@{
+    ViewBag.Title = "SSW HealthCheck";
+    Layout = "~/Views/Shared/_HealthCheckLayout.cshtml";
+}
 
-    @section scripts {
-        <style type="text/css">
-            h2 {
-                margin: 0;
-                font-size: 20px;
-            }
-        </style>
+@section scripts {
+    <style type="text/css">
+        h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+    </style>
 
-        <script type="text/javascript">
-            var t = [@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))];
-            var hcheck = angular.module('ssw.healthcheck').value('tests', t[0]);
-            var url = "@Url.Content("~/")";
-        </script>
-    }
+    <script type="text/javascript">
+        var t = [@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))];
+        var hcheck = angular.module('ssw.healthcheck').value('tests', t[0]);
+        var url = "@Url.Content("~/")";
+    </script>
+}
+    
+@section stats
+{
+    <span class="stats">
+        <span class="stat-node">
+            <span class="glyphicon glyphicon-ok-sign pass-text" class="stat-node-icon"></span>
+            <b>Passed:</b> <span id="passed-stat">0</span>
+        </span>
+        <span class="stat-node">
+            <span class="glyphicon glyphicon-ok-sign pass-warning-text" class="stat-node-icon"></span>
+            <b>Warning:</b>; <span id="warning-stat">0</span>
+        </span>
+        <span class="stat-node">
+            <span class="glyphicon glyphicon-exclamation-sign fail-text" class="stat-node-icon"></span>
+            <b>Failed:</b> <span id="failed-stat">0</span>
+        </span>
+        <span class="stat-node">
+            <span class="glyphicon glyphicon-info-sign info-text" class="stat-node-icon"></span>
+            <b>Pending:</b> <span id="pending-stat">0</span>
+        </span>
+        <span class="stat-node"><b>Total:</b> <span id="all-stat">0</span> </span>
+    </span>
+}
 
-    <div id="ng-app" data-root-path="@Url.Content("~/")" data-ng-app="ssw.healthcheck">
-        <h1>SSW HealthCheck</h1>
-        <div ng-controller="HealthCheck as controller" class="btn-block button-all">
-            <span class="stats">
-                <span class="stat-node">
-                    <span class="glyphicon glyphicon-ok-sign pass-text" class="stat-node-icon"></span>
-                    <b>Passed:</b> <span id="passed-stat">0</span>
-                </span>
-                <span class="stat-node">
-                    <span class="glyphicon glyphicon-ok-sign pass-warning-text" class="stat-node-icon"></span>
-                    <b>Warning:</b>; <span id="warning-stat">0</span>
-                </span>
-                <span class="stat-node">
-                    <span class="glyphicon glyphicon-exclamation-sign fail-text" class="stat-node-icon"></span>
-                    <b>Failed:</b> <span id="failed-stat">0</span>
-                </span>
-                <span class="stat-node">
-                    <span class="glyphicon glyphicon-info-sign info-text" class="stat-node-icon"></span>
-                    <b>Pending:</b> <span id="pending-stat">0</span>
-                </span>
-                <span class="stat-node"><b>Total:</b> <span id="all-stat">0</span> </span>
+<div id="ng-app" data-root-path="@Url.Content("~/")" data-ng-app="ssw.healthcheck">
+    <div ng-controller="HealthCheck as controller" class="btn-block button-all">
+        <span class="stats">
+            <span class="stat-node">
+                <span class="glyphicon glyphicon-ok-sign pass-text" class="stat-node-icon"></span>
+                <b>Passed:</b> <span id="passed-stat">0</span>
             </span>
-            <button class="btn btn-default" ng-click="controller.CheckAll()">Check All</button>
-        </div>
+            <span class="stat-node">
+                <span class="glyphicon glyphicon-ok-sign pass-warning-text" class="stat-node-icon"></span>
+                <b>Warning:</b>; <span id="warning-stat">0</span>
+            </span>
+            <span class="stat-node">
+                <span class="glyphicon glyphicon-exclamation-sign fail-text" class="stat-node-icon"></span>
+                <b>Failed:</b> <span id="failed-stat">0</span>
+            </span>
+            <span class="stat-node">
+                <span class="glyphicon glyphicon-info-sign info-text" class="stat-node-icon"></span>
+                <b>Pending:</b> <span id="pending-stat">0</span>
+            </span>
+            <span class="stat-node"><b>Total:</b> <span id="all-stat">0</span> </span>
+        </span>
+        <button class="btn btn-default" ng-click="controller.CheckAll()">Check All</button>
+    </div>
 
-        <div ng-controller="HealthCheck as controller" class="ng-cloak">
-            <div>
-                <div id="accordion" class="panel-group" ng-repeat="group in tests">
-                    <h3>{{group.Name}}</h3>
-                    <div id="accordion" class="panel-group" ng-repeat="test in group.TestMonitors">
-                        <div class="panel panel-default" ng-class="{'panel-passed': (test.Result != null && test.Result.Success == true), 'panel-failed': (test.Result != null && test.Result.Success == false) }">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    <a data-toggle="collapse" data-target="#panel{{test.UId}}" class="collapsed">
-                                        {{sev}}
-                                        <span class="glyphicon" ng-class="{'running-icon' : test.IsRunning, 'glyphicon-question-sign info-text': test.Result == null && !test.IsRunning, 'glyphicon-ok-sign pass-text': !test.Result.ShowWarning && test.Result.Success && !test.IsRunning, 'glyphicon-exclamation-sign pass-warning-text': test.Result.ShowWarning && test.Result.Success && !test.IsRunning, 'glyphicon-exclamation-sign fail-text': (!test.Result.Success && !test.IsRunning) }"></span>
-                                        <span ng-bind-html="test.Name | toTrusted"></span>
-                                    </a>
-                                </h3>
-                            </div>
-                            <div id="panel{{test.UId}}" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p><span ng-bind-html="test.Description | toTrusted"></span></p>
-                                    <hr />
-                                    <h4 ng-class="{'fail-text': (test.Result != null && test.Result.Success == false) }">
-                                        {{test.IsRunning ? "Running" : (test.Result == null ? "Pending" : (test.Result.Success ? "Passed" : "Failed" ))}}
-                                    </h4>
-                                    <p ng-show="test.Result.Message">
-                                        <span ng-bind-html="test.Result.Message | toTrusted"></span>
-                                    </p>
-                                    <div class="progress" ng-show="test.IsRunning">
-                                        <div class="progress-bar" role="progressbar" ng-style="{width: ((test.Progress.Val - test.Progress.Min) /  (test.Progress.Max -  test.Progress.Min)) * 100 + '%'}">
-                                            <span class="sr-only">{{((test.Progress.Val - test.Progress.Min) /  (test.Progress.Max -  test.Progress.Min)) * 100 + '%'}}</span>
-                                        </div>
+    <div ng-controller="HealthCheck as controller" class="ng-cloak">
+        <div>
+            <div id="accordion" class="panel-group" ng-repeat="group in tests">
+                <h3>{{group.Name}}</h3>
+                <div id="accordion" class="panel-group" ng-repeat="test in group.TestMonitors">
+                    <div class="panel panel-default" ng-class="{'panel-passed': (test.Result != null && test.Result.Success == true), 'panel-failed': (test.Result != null && test.Result.Success == false) }">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <a data-toggle="collapse" data-target="#panel{{test.UId}}" class="collapsed">
+                                    {{sev}}
+                                    <span class="glyphicon" ng-class="{'running-icon' : test.IsRunning, 'glyphicon-question-sign info-text': test.Result == null && !test.IsRunning, 'glyphicon-ok-sign pass-text': !test.Result.ShowWarning && test.Result.Success && !test.IsRunning, 'glyphicon-exclamation-sign pass-warning-text': test.Result.ShowWarning && test.Result.Success && !test.IsRunning, 'glyphicon-exclamation-sign fail-text': (!test.Result.Success && !test.IsRunning) }"></span>
+                                    <span ng-bind-html="test.Name | toTrusted"></span>
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="panel{{test.UId}}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p><span ng-bind-html="test.Description | toTrusted"></span></p>
+                                <hr />
+                                <h4 ng-class="{'fail-text': (test.Result != null && test.Result.Success == false) }">
+                                    {{test.IsRunning ? "Running" : (test.Result == null ? "Pending" : (test.Result.Success ? "Passed" : "Failed" ))}}
+                                </h4>
+                                <p ng-show="test.Result.Message">
+                                    <span ng-bind-html="test.Result.Message | toTrusted"></span>
+                                </p>
+                                <div class="progress" ng-show="test.IsRunning">
+                                    <div class="progress-bar" role="progressbar" ng-style="{width: ((test.Progress.Val - test.Progress.Min) /  (test.Progress.Max -  test.Progress.Min)) * 100 + '%'}">
+                                        <span class="sr-only">{{((test.Progress.Val - test.Progress.Min) /  (test.Progress.Max -  test.Progress.Min)) * 100 + '%'}}</span>
                                     </div>
-                                    <table class="table table-hover table-condensed" ng-show="(test.Events && test.Events.length)">
-                                        <thead>
-                                            <tr>
-                                                <th class="col-sm-1 status-header">Status</th>
-                                                <th class="col-sm-3">Event Date</th>
-                                                <th class="col-sm-8">Message</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="e in test.Events | filter:{ Message: '!!'}">
-                                                <td ng-class="{'status-col-info': e.EventType == 0, 'status-col-ok': e.EventType == 3, 'status-col-error': (e.EventType == 2), 'status-col-warning': (e.EventType == 1) }">
-                                                    <span class="glyphicon" ng-class="{'glyphicon-info-sign': e.EventType == 0, 'glyphicon-ok': e.EventType == 3, 'glyphicon-remove': (e.EventType == 2), 'glyphicon-exclamation-sign': (e.EventType == 1) }"></span>
-                                                </td>
-                                                <td>{{e.DateTime | date:'short'}}</td>
-                                                <td><span ng-bind-html="e.Message | toTrusted"></span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <button class="btn btn-default" ng-click="controller.Check(test)">Check</button>
                                 </div>
+                                <table class="table table-hover table-condensed" ng-show="(test.Events && test.Events.length)">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-sm-1 status-header">Status</th>
+                                            <th class="col-sm-3">Event Date</th>
+                                            <th class="col-sm-8">Message</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="e in test.Events | filter:{ Message: '!!'}">
+                                            <td ng-class="{'status-col-info': e.EventType == 0, 'status-col-ok': e.EventType == 3, 'status-col-error': (e.EventType == 2), 'status-col-warning': (e.EventType == 1) }">
+                                                <span class="glyphicon" ng-class="{'glyphicon-info-sign': e.EventType == 0, 'glyphicon-ok': e.EventType == 3, 'glyphicon-remove': (e.EventType == 2), 'glyphicon-exclamation-sign': (e.EventType == 1) }"></span>
+                                            </td>
+                                            <td>{{e.DateTime | date:'short'}}</td>
+                                            <td><span ng-bind-html="e.Message | toTrusted"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <button class="btn btn-default" ng-click="controller.Check(test)">Check</button>
                             </div>
                         </div>
                     </div>
@@ -102,3 +123,4 @@
             </div>
         </div>
     </div>
+</div>

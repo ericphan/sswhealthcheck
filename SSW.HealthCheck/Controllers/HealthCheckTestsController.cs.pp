@@ -42,6 +42,29 @@ namespace $rootnamespace$.Controllers
                     }).ToList();
             return results;
         }
+
+        /// <summary>
+        /// Gets test run statistics
+        /// </summary>
+        /// <returns>Statistics of running test.</returns>
+        [AcceptVerbs("GET", "POST")]
+        public TestRunSummary Statistics()
+        {
+            var tests = HealthCheckService.Default.GetAll();
+            var results = tests.Select(test => 
+                new TestRunInstance
+                    {
+                        Result = test.Run()
+                    }).ToList();
+            return new TestRunSummary
+                       {
+                           IsHealthy = results.All(r => r.Result.Success),
+                           Failed = results.Count(r => !r.Result.Success),
+                           Passed = results.Count(r => r.Result.Success && !r.Result.ShowWarning),
+                           Warnings = results.Count(r => r.Result.Success && r.Result.ShowWarning),
+                           Total = results.Count()
+                       };
+        }
         
         /// <summary>
         /// Runs specific test.
