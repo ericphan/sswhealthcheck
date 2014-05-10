@@ -32,12 +32,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="SSW.Data.Framework, Version=10.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SSW.SQLDeploy.Core.1.0.1.0\lib\net45\SSW.Data.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SSW.HealthCheck.Infrastructure, Version=1.0.23.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SSW.HealthCheck.Core.1.0.23.0\lib\net45\SSW.HealthCheck.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="SSW.SQLDeploy.Core, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -47,6 +58,7 @@
       <HintPath>..\packages\SSW.SqlVerify.Core.1.0.0.0\lib\net45\SSW.SqlVerify.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -65,14 +77,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="SSW.HealthCheck.SQLDeploy.nuspec" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SSW.HealthCheck.Infrastructure\SSW.HealthCheck.Infrastructure.csproj">
-      <Project>{263834f9-36f6-4b31-a775-4745b13d602c}</Project>
-      <Name>SSW.HealthCheck.Infrastructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Titles.resx">

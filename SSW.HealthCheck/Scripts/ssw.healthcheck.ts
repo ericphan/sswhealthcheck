@@ -32,8 +32,8 @@ module ssw {
 
         export class HealthCheckController {
             $http: any;
-            UpdateStats: () => void;
-            Check: (model: ITestMonitor) => void;
+            UpdateStats: (data) => void;
+            Check: (model: ITestMonitor, reset: boolean) => void;
             CheckAll: () => void;
             CheckAllDefault: () => void;
             OnTestStarted: (x: ITestChanged) => void;
@@ -47,6 +47,10 @@ module ssw {
                 // convert tests into mapping
                 var testsByKey = {};
                 var allTests = [];
+                var failed = [];
+                var warning = [];
+                var passed = [];
+
                 for (var i = 0; i < $scope.tests.length; i++) {
                     for (var j = 0; j < $scope.tests[i].TestMonitors.length; j++) {
                         allTests.push($scope.tests[i].TestMonitors[j]);
@@ -59,42 +63,70 @@ module ssw {
                 }
 
                 this.$http = $http;
-                this.UpdateStats = () => {
-                    var $allTests = $(".panel");
+                this.UpdateStats = (data) => {
+                    var all = allTests.length;
+                    if (data.Result.Success && !data.Result.ShowWarning) {
+                        passed.push(data.Key);
+                    }
 
-                    var all = $allTests.length;
-                    var passed = $allTests.find(".panel-title .pass-text").length;
-                    var warning = $allTests.find(".panel-title .pass-warning-text").length;
-                    var failed = $allTests.find(".panel-title .fail-text").length;
+                    if (data.Result.Success && data.Result.ShowWarning) {
+                        warning.push(data.Key);
+                    }
+
+                    if (!data.Result.Success) {
+                        failed.push(data.Key);
+                    }
 
                     $("#all-stat").text(all);
-                    $("#passed-stat").text(passed);
-                    $("#warning-stat").text(warning);
-                    $("#failed-stat").text(failed);
-                    $("#pending-stat").text((all - passed - warning - failed));
+                    $("#passed-stat").text(passed.length);
+                    $("#warning-stat").text(warning.length);
+                    $("#failed-stat").text(failed.length);
+                    $("#pending-stat").text((all - passed.length - warning.length - failed.length));
                 };
-                this.Check = (model: ITestMonitor) => {
+                this.Check = (model: ITestMonitor, reset) => {
                     var that = this;
+                    if (!reset) {
+                        var index = passed.indexOf(model.Key);
+                        if (index > -1) {
+                            passed.splice(index, 1);
+                        } else {
+                            index = failed.indexOf(model.Key);
+                            if (index > -1) {
+                                failed.splice(index, 1);
+                            } else {
+                                index = warning.indexOf(model.Key);
+                                if (index > -1) {
+                                    warning.splice(index, 1);
+                                }
+                            }
+                        }
+                    }
+
                     $http.get(($("#ng-app").data("root-path") || "/") + "HealthCheck/Check?Key=" + model.Key)
                         .success((data: any, status: any, headers: any, config: any) => {
-                            that.UpdateStats();
-                            console.log(data);
+                            that.UpdateStats(data);
                         })
                         .error((data: any, status: any, headers: any, config: any) => {
                             console.log(data);
                         });
                 };
                 this.CheckAll = () => {
+                    passed.length = 0;
+                    failed.length = 0;
+                    warning.length = 0;
                     for (var k in allTests) {
                         var test = allTests[k];
-                        this.Check(test);
+                        this.Check(test, true);
                     }
                 };
                 this.CheckAllDefault = () => {
+                    passed.length = 0;
+                    failed.length = 0;
+                    warning.length = 0;
                     for (var k in allTests) {
                         var test = allTests[k];
                         if (!test.IsRunning && test.IsDefault) {
-                            this.Check(test);
+                            this.Check(test, true);
                         }
                     }
                 };

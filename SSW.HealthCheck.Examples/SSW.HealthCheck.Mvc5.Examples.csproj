@@ -77,6 +77,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SSW.SQLDeploy.Core.1.0.1.0\lib\net45\SSW.Data.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="SSW.HealthCheck.Infrastructure, Version=1.0.23.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SSW.HealthCheck.Core.1.0.23.0\lib\net45\SSW.HealthCheck.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="SSW.HealthCheck.Mvc5, Version=1.0.14.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SSW.HealthCheck.Mvc5.1.0.14.1\lib\net45\SSW.HealthCheck.Mvc5.dll</HintPath>
@@ -213,7 +217,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HealthCheckController.cs" />
-    <Compile Include="Controllers\HealthCheckTestsController.cs" />
+    <Compile Include="Controllers\HealthCheckApi.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -642,10 +646,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SSW.HealthCheck.Infrastructure\SSW.HealthCheck.Infrastructure.csproj">
-      <Project>{263834f9-36f6-4b31-a775-4745b13d602c}</Project>
-      <Name>SSW.HealthCheck.Infrastructure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SSW.HealthCheck.SQLDeploy\SSW.HealthCheck.SQLDeploy.csproj">
       <Project>{49A47D42-A20F-4CFC-BE39-0E2960742131}</Project>
       <Name>SSW.HealthCheck.SQLDeploy</Name>

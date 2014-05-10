@@ -28,7 +28,7 @@
         </span>
         <span class="stat-node">
             <span class="glyphicon glyphicon-ok-sign pass-warning-text" class="stat-node-icon"></span>
-            <b>Warning:</b>; <span id="warning-stat">0</span>
+            <b>Warning:</b> <span id="warning-stat">0</span>
         </span>
         <span class="stat-node">
             <span class="glyphicon glyphicon-exclamation-sign fail-text" class="stat-node-icon"></span>
@@ -68,9 +68,9 @@
 
     <div ng-controller="HealthCheck as controller" class="ng-cloak">
         <div>
-            <div id="accordion" class="panel-group" ng-repeat="group in tests">
+            <div class="panel-group-wrapper" ng-repeat="group in tests">
                 <h3>{{group.Name}}</h3>
-                <div id="accordion" class="panel-group" ng-repeat="test in group.TestMonitors">
+                <div class="panel-group" ng-repeat="test in group.TestMonitors">
                     <div class="panel panel-default" ng-class="{'panel-passed': (test.Result != null && test.Result.Success == true), 'panel-failed': (test.Result != null && test.Result.Success == false) }">
                         <div class="panel-heading">
                             <h3 class="panel-title">

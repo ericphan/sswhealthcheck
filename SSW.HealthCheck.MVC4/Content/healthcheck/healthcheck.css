@@ -50,7 +50,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .status-col-error {
-    color: #a94442;
+    color: #cc4241;
 }
 
 .status-col-info {
@@ -66,7 +66,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .fail-text {
-    color: #a94442;
+    color: #cc4241;
 }
 
 .pass-text {
@@ -111,7 +111,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .panel-failed {
-    border-top: 3px solid #a94442 !important;
+    border-top: 3px solid #cc4241 !important;
 }
 
 .button-all {
@@ -144,4 +144,12 @@ input[type="checkbox"].input-validation-error {
 
 .stat-node-icon {
     margin-right: 3px;
+}
+
+.panel-group-wrapper {
+    margin-bottom: 40px;
+}
+
+.stats span:last-child {
+    margin: 0;
 }

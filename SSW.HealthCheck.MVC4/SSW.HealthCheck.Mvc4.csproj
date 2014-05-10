@@ -32,6 +32,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.1.2.1\lib\net40\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
@@ -43,7 +50,12 @@
       <Private>True</Private>
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SSW.HealthCheck.Infrastructure, Version=1.0.23.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SSW.HealthCheck.Core.1.0.23.0\lib\net45\SSW.HealthCheck.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -98,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Start\HealthCheckConfig.cs.pp" />
+    <None Include="App.config" />
     <None Include="Build\TypeScriptConfiguration.targets">
       <SubType>Designer</SubType>
     </None>
@@ -128,12 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SSW.HealthCheck.Infrastructure\SSW.HealthCheck.Infrastructure.csproj">
-      <Project>{263834f9-36f6-4b31-a775-4745b13d602c}</Project>
-      <Name>SSW.HealthCheck.Infrastructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -158,7 +158,7 @@ namespace SSW.HealthCheck.Infrastructure.Tests
         {
             var config = WebConfigurationManager.OpenWebConfiguration("~/");
             var compilationSection = config.GetSection("system.web/compilation") as CompilationSection;
-            Assert.PassWithWarning("Passed");
+            Assert.PassWithWarning("Debug mode is on.");
             if (compilationSection != null)
             {
                 if (compilationSection.Debug)

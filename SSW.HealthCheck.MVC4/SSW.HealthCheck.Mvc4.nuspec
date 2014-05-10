@@ -18,7 +18,7 @@
 			<dependency id="bootstrap" version="3.0.0" />
 			<dependency id="Microsoft.AspNet.SignalR" version="[1.2.1]" />
 			<dependency id="Microsoft.AspNet.WebApi" version="5.0.0" />
-			<dependency id="SSW.HealthCheck.Core" version="1.0.21" />
+			<dependency id="SSW.HealthCheck.Core" version="1.0.23" />
 		</dependencies>
 	</metadata>
 	<files>

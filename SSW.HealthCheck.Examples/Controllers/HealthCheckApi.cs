@@ -13,43 +13,19 @@ namespace SSW.HealthCheck.Mvc5.Examples.Controllers
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Web.Http;
-    using System.Web.UI.WebControls.Expressions;
 
     using SSW.HealthCheck.Infrastructure;
 
     /// <summary>
     /// Health check API for tests. Allows running multiple or individual tests.
     /// </summary>
-    public class HealthCheckTestsController : ApiController
-    {    
-        /// <summary>
-        /// Run all tests.
-        /// Sample request: GET api/healthchecktests
-        /// </summary>
-        /// <returns>Collection of all test results</returns>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        public IEnumerable<TestRunInstance> Get()
-        {
-            var tests = HealthCheckService.Default.GetAll();
-            var results = tests.Select(test => 
-                new TestRunInstance
-                    {
-                        Result = test.Run(), 
-                        Key = test.Key,
-                        Name = test.Name,
-                        Description = test.Description,
-                        Order = test.Order,
-                        TestCategory = test.TestCategory
-                    }).ToList();
-            return results;
-        }
-
+    public class HealthCheckStatisticsController : ApiController
+    {   
         /// <summary>
         /// Gets test run statistics
         /// </summary>
         /// <returns>Statistics of running test.</returns>
-        [AcceptVerbs("GET", "POST")]
-        public TestRunSummary Statistics()
+        public TestRunSummary Get()
         {
             var tests = HealthCheckService.Default.GetAll();
             var results = tests.Select(test => 
@@ -66,18 +42,25 @@ namespace SSW.HealthCheck.Mvc5.Examples.Controllers
                            Total = results.Count()
                        };
         }
-        
+    }
+
+    /// <summary>
+    /// Health check API for tests. Allows running multiple or individual tests.
+    /// </summary>
+    public class HealthCheckApi : ApiController
+    {   
         /// <summary>
-        /// Runs specific test.
-        /// Sample request: GET api/healthchecktests/debug
+        /// Run all tests.
+        /// Sample request: GET api/healthchecktests
         /// </summary>
-        /// <param name="id">The test id.</param>
-        /// <returns>Result of test run</returns>
+        /// <param name="id">The optional test id.</param>
+        /// <returns>Collection of all test results</returns>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        public TestRunInstance Get(string id)
+        public IEnumerable<TestRunInstance> Get(string id = null)
         {
-            var test = HealthCheckService.Default.GetByKey(id);
-            var result = new TestRunInstance
+            var tests = HealthCheckService.Default.GetAll().Where(t => string.IsNullOrEmpty(id) || t.Key == id);
+            var results = tests.Select(test => 
+                new TestRunInstance
                     {
                         Result = test.Run(), 
                         Key = test.Key,
@@ -85,21 +68,7 @@ namespace SSW.HealthCheck.Mvc5.Examples.Controllers
                         Description = test.Description,
                         Order = test.Order,
                         TestCategory = test.TestCategory
-                    };
-
-            return result;
-        }
-
-        /// <summary>
-        /// Get list of all test ids/keys.
-        /// Sample request: GET api/healthchecktests/gettestids
-        /// </summary>
-        /// <returns>Collection of all test results</returns>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        public IEnumerable<string> GetTestIds()
-        {
-            var tests = HealthCheckService.Default.GetAll();
-            var results = tests.Select(test => test.Key).ToList();
+                    }).ToList();
             return results;
         }
     }
