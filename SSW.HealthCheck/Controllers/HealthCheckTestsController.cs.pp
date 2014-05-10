@@ -47,7 +47,7 @@ namespace $rootnamespace$.Controllers
     /// <summary>
     /// Health check API for tests. Allows running multiple or individual tests.
     /// </summary>
-    public class HealthCheckApi : ApiController
+    public class HealthCheckTestsController : ApiController
     {   
         /// <summary>
         /// Run all tests.
