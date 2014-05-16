@@ -16,6 +16,11 @@
         var t = [@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))];
         var hcheck = angular.module('ssw.healthcheck').value('tests', t[0]);
         var url = "@Url.Content("~/")";
+        // preload images
+        $(function() {
+            var img = new Image();
+            img.src = "@Url.Content("~/Content/healthcheck/loader16.gif")";
+        });
     </script>
 }
     
