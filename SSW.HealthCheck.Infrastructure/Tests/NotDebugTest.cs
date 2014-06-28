@@ -3,6 +3,7 @@
 namespace SSW.HealthCheck.Infrastructure.Tests
 {
     using System.Collections.Generic;
+    using System.Configuration;
 
     /// <summary>
     /// Check if system is in debug mode
@@ -156,8 +157,7 @@ namespace SSW.HealthCheck.Infrastructure.Tests
         /// <param name="context">Test context</param>
         public void Test(ITestContext context)
         {
-            var config = WebConfigurationManager.OpenWebConfiguration("~/");
-            var compilationSection = config.GetSection("system.web/compilation") as CompilationSection;
+            var compilationSection = ConfigurationManager.GetSection("system.web/compilation") as CompilationSection;
             Assert.PassWithWarning("Debug mode is on.");
             if (compilationSection != null)
             {
