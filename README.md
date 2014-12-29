@@ -3,7 +3,7 @@ sswhealthcheck
 
 SSW HealthCheck
 
-Websites can be complicated, and a very small mistake can take the whole site down. There are two different kind of errors, coding errors and deployment errors; coding errors should be picked up by compiling and debugging, while deployment errors should be picked up by HealthCheck pag.
+Websites can be complicated, and a very small mistake can take the whole site down. There are two different kind of errors, coding errors and deployment errors; coding errors should be picked up by compiling and debugging, while deployment errors should be picked up by HealthCheck page.
 
 Prerequisites
 ==============
